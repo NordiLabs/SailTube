@@ -1,0 +1,48 @@
+{
+ "playabilityStatus": {
+  "status": "OK"
+ },
+ "playerConfig": {
+  "audioConfig": {
+   "enablePerFormatLoudness": true,
+   "loudnessTargetLkfs": -14,
+   "perceptualLoudnessDb": -10.55,
+   "trackAbsoluteLoudnessLkfs": -10.55
+  }
+ },
+ "responseContext": {
+  "visitorData": "SYNTHETICVISITORDATA"
+ },
+ "streamingData": {
+  "adaptiveFormats": [
+   {
+    "bitrate": 130000,
+    "itag": 140,
+    "mimeType": "audio/mp4; codecs=\"mp4a.40.2\"",
+    "signatureCipher": "s=SYNTHETIC&sp=sig&url=https%3A%2F%2Frr1.googlevideo.com%2Fvideoplayback"
+   }
+  ],
+  "expiresInSeconds": "21540",
+  "hlsManifestUrl": "https://manifest.googlevideo.com/api/manifest/hls_variant/synthetic/file/index.m3u8"
+ },
+ "videoDetails": {
+  "author": "Synthetic Artist - Topic",
+  "lengthSeconds": "211",
+  "thumbnail": {
+   "thumbnails": [
+    {
+     "height": 90,
+     "url": "https://i.ytimg.com/vi/AAAAAAAAAAA/default.jpg",
+     "width": 120
+    },
+    {
+     "height": 360,
+     "url": "https://i.ytimg.com/vi/AAAAAAAAAAA/hqdefault.jpg",
+     "width": 480
+    }
+   ]
+  },
+  "title": "Synthetic Song",
+  "videoId": "AAAAAAAAAAA"
+ }
+}

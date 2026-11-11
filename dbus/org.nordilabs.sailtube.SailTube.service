@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
+# Session-bus activation for links (PLT-13, E10 variant A). The name is the Sailjail
+# <OrganizationName>.<ApplicationName>; invoker applies the sandbox from the desktop file.
+[D-BUS Service]
+Name=org.nordilabs.sailtube.SailTube
+Exec=/usr/bin/invoker --type=silica-qt5 --desktop-file=harbour-sailtube.desktop --single-instance /usr/bin/harbour-sailtube

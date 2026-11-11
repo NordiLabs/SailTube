@@ -1,0 +1,107 @@
+{
+  "note": "PLT-03 path scan exceptions (tools/platform_check.py paths). allowed_absolute: read-only paths anywhere in shipped code. exceptions: one deliberate construct in one file; each must still match something, or the check fails as stale. Rationale in docs/PLATFORM_CHECKS.md.",
+  "allowed_absolute": [
+    {
+      "pattern": "^/usr/share/harbour-sailtube(/|$)",
+      "reason": "The package's own read-only runtime root (NORDTILE_RUNTIME_ROOT: bundled yt-dlp, resolver, QuickJS, QML, licence notices). Readable inside the sandbox."
+    },
+    {
+      "pattern": "^/usr/share/icons/hicolor/[0-9x]+/apps/harbour-sailtube\\.(png|svg)$",
+      "reason": "The package's own installed icon, read-only."
+    },
+    {
+      "pattern": "^/proc/self(/|$)",
+      "reason": "Kernel interface of the own process (memory, limits). No user data."
+    },
+    {
+      "pattern": "^/dev/(null|urandom)$",
+      "reason": "Standard device nodes."
+    },
+    {
+      "pattern": "^/proc/uptime$",
+      "reason": "System uptime, read by the opt-in start-up trace (SAILTUBE_STARTUP_TRACE) to count from the process start. No user data."
+    }
+  ],
+  "exceptions": [
+    {
+      "id": "user-typed-import-path",
+      "file": "Core/Library/Infrastructure/ZipReader.cpp",
+      "rule": "home",
+      "match": "QDir::homePath",
+      "reason": "Expands a '~/' path the user typed or picked for an import (IMP-01). It reads only that file and stores nothing outside the layout. Under Sailjail it reaches only folders a declared permission opens (see the Downloads sandbox gap).",
+      "requirement": "IMP-01; PLT-03"
+    },
+    {
+      "id": "user-typed-import-path-literal",
+      "file": "Core/Library/Infrastructure/ZipReader.cpp",
+      "rule": "absolute",
+      "match": "^~/?$",
+      "reason": "The '~' and '~/' prefixes recognised by the same import path expansion.",
+      "requirement": "IMP-01; PLT-03"
+    },
+    {
+      "id": "removable-media-user-name",
+      "file": "Core/Downloads/Infrastructure/DownloadLocation.cpp",
+      "rule": "env",
+      "match": "\"USER\"",
+      "reason": "The user name for the SD-card mount root /run/media/<user> (RemovableMedia, DL-06). Not a data path of the app.",
+      "requirement": "DL-06; PLT-04"
+    },
+    {
+      "id": "removable-media-user-name-fallback",
+      "file": "Core/Downloads/Infrastructure/DownloadLocation.cpp",
+      "rule": "home",
+      "match": "QDir::home\\s*\\(",
+      "reason": "QDir::home().dirName(): the same user name when USER is unset. Nothing is read from or written to the home directory.",
+      "requirement": "DL-06; PLT-04"
+    },
+    {
+      "id": "ram-filesystem-deny-list",
+      "file": "Core/Downloads/Domain/DownloadPolicy.cpp",
+      "rule": "absolute",
+      "match": "^/(tmp|var/tmp|dev/shm|run/user)$",
+      "reason": "Deny list: RAM file systems refused as download targets (PLT-09). These paths are compared against, never opened.",
+      "requirement": "PLT-09; DL-06"
+    },
+    {
+      "id": "sailfish-browser-cookie-import",
+      "file": "Shared/SailTune/Core/Ytm/Sources/Infrastructure/GeckoCookieJarReader.cpp",
+      "rule": "home",
+      "match": "QDir::homePath",
+      "reason": "ACC-03 (FULL only, listed as lost on STORE): finds the Sailfish Browser profile under the home directory, opens the cookie database read-only and no-follow, and copies it into the app's private 0700 scratch directory before SQLite sees it. Pinned SailTune code; nothing is written outside the layout.",
+      "requirement": "ACC-03; PLT-03"
+    },
+    {
+      "id": "tmpdir-ram-deny-list",
+      "file": "Core/Player/Domain/TempDirPolicy.h",
+      "rule": "absolute",
+      "match": "^/(tmp|run|dev/shm|var/run)$",
+      "reason": "Deny list: RAM-backed trees refused as TMPDIR / media spool (PLT-09). These prefixes are compared against, never opened.",
+      "requirement": "PLT-09"
+    },
+    {
+      "id": "potoken-bind-verification",
+      "file": "Core/Resolver/Infrastructure/PoTokenProvider.cpp",
+      "rule": "absolute",
+      "match": "^/proc$",
+      "reason": "Read-only kernel tables (/proc/net/tcp, tcp6 and the helper's /proc/<pid>/fd) to verify the PO-token helper listens only on 127.0.0.1 (RES-14). Nothing is written.",
+      "requirement": "RES-14; PLT-03"
+    },
+    {
+      "id": "hardware-probe-build-key",
+      "file": "Core/Player/Infrastructure/HardwareProbeRunner.cpp",
+      "rule": "absolute",
+      "match": "^/etc/(hw-release|os-release)$",
+      "reason": "Read-only system identity files: the PLY-20 hardware probe runs once per device build, keyed on the OS and hardware release. Nothing is written.",
+      "requirement": "PLY-20; PLT-03"
+    },
+    {
+      "id": "account-browser-import-home",
+      "file": "Clients/Sailfish/Composition/main.cpp",
+      "rule": "home",
+      "match": "QDir::homePath",
+      "reason": "ACC-03 (FULL only): the home directory handed to the account's browser import, which probes the three documented Sailfish Browser cookie databases under it, copies the found one with its -wal/-shm into the app's private 0700 scratch directory (AppDataLocation/account/scratch), reads the copy and deletes it. Nothing is read otherwise and nothing is written outside the layout; STORE offers no browser import.",
+      "requirement": "ACC-03; PLT-03"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "note": "NFR-MNT-02 / NFR-SEC-06: every bundled or managed third-party component of the RPM, with the shipped bytes (after packaging, e.g. strip) and its licence review state. tools/rpm_audit.py compares this with the RPM payload. Source of the inputs: SailTune's prepared Python-archive runtime stage (licenses/source-manifest.json in the RPM). A component whose review is not complete blocks a release build (rpm_audit.py --release), never a development build.",
+  "app_owned": [
+    "/usr/bin/harbour-sailtube",
+    "/usr/share/applications/harbour-sailtube.desktop",
+    "/usr/share/dbus-1/services/*.service",
+    "/usr/share/icons/**",
+    "/usr/share/harbour-sailtube/LICENSE",
+    "/usr/share/harbour-sailtube/qml",
+    "/usr/share/harbour-sailtube/qml/**",
+    "/usr/share/harbour-sailtube/translations",
+    "/usr/share/harbour-sailtube/translations/**",
+    "/usr/share/harbour-sailtube/runtime/resolver.py",
+    "/usr/share/harbour-sailtube/runtime/Resolver.qml",
+    "/usr/share/harbour-sailtube/runtime/Worker.qml",
+    "/usr/share/harbour-sailtube/runtime/yt-dlp-release-key.asc",
+    "/usr/share/harbour-sailtube/runtime/verify_release.py",
+    "/usr/share/harbour-sailtube/runtime/worker.py",
+    "/usr/share/harbour-sailtube/licenses/**"
+  ],
+  "components": [
+    {
+      "name": "yt-dlp",
+      "version": "2026.10.26",
+      "kind": "bundled",
+      "licence": "Unlicense AND ISC AND MIT (upstream zipimport release including yt-dlp-ejs)",
+      "source": "https://github.com/yt-dlp/yt-dlp/releases/download/2026.10.26/yt-dlp",
+      "review": {
+        "complete": false,
+        "note": "SailTune's runtime stage marks distribution_review_complete=false; notices are shipped, the redistribution review is not done"
+      },
+      "files": [
+        {
+          "path": "/usr/share/harbour-sailtube/runtime/yt-dlp.pyz",
+          "size": 3073072,
+          "sha256": "e51e69e89489f199530f13d32a4342da3ddb2cf34842f364603a066db05afbf3"
+        }
+      ]
+    },
+    {
+      "name": "QuickJS-NG (libsailtune-quickjs)",
+      "version": "0.18.0 (d7215b0ad3fc2c562e8317fd9bca058fd4863804)",
+      "kind": "bundled",
+      "licence": "MIT",
+      "source": "https://codeload.github.com/quickjs-ng/quickjs/tar.gz/d7215b0ad3fc2c562e8317fd9bca058fd4863804",
+      "review": {
+        "complete": false,
+        "note": "covered by the same incomplete runtime distribution review"
+      },
+      "files": [
+        {
+          "path": "/usr/share/harbour-sailtube/lib/libsailtune-quickjs.so.1",
+          "size": 1248696,
+          "sha256": "523fd05445f954230517b72708690b708678b4f9b60467a3b633cc2834b28b52",
+          "stage_sha256": "37f30159baca18d252880379a6f51c2395ab4027ed3bb472b55be090031c479f",
+          "packaging": "strip --strip-unneeded in %install"
+        }
+      ]
+    }
+  ],
+  "forbidden_helpers": [
+    "deno",
+    "node",
+    "ffmpeg",
+    "ffprobe",
+    "bgutil-pot",
+    "bgutil-ytdlp-pot-provider",
+    "pot-provider",
+    "yt-dlp_linux",
+    "yt-dlp_linux_aarch64",
+    "phantomjs"
+  ]
+}

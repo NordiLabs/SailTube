@@ -1,0 +1,444 @@
+{
+  "version": 1,
+  "note": "SailTube's outbound host inventory (NFR-SEC-01), checked by tests/privacy/run.sh with SailTune's pinned checker. Only the hosts of SAILTUBE_REQUIREMENTS NFR-SEC-01 may ever appear here. A file that starts using a host is added to that host's 'files' in the same commit, together with docs/PRIVACY_NETWORK.md. No analytics, advertising, telemetry or crash-upload endpoint may be added.",
+  "hosts": {
+    "www.youtube.com": {
+      "kind": "request",
+      "purpose": "Anonymous stream lookup: watch page through the bundled yt-dlp child, and the shared fast path's visitor id and player requests; catalog component: anonymous InnerTube WEB discovery (search, browse, next, resolve_url, player, reel item and reel sequence for Shorts), the caption track list of a playing video (player with the shared fast path's client description and a visitor id kept in memory only, visitor_id when no answer has named one), the homepage client-version scrape, channel RSS feeds and caption tracks (api/timedtext); a connection opened ahead of a search (TCP + TLS only, no HTTP request: 1.5 s after start, on return to the foreground, on the first typed character)",
+      "trigger": "the user opens or plays a video (prefetch: a video the user is about to open); the user searches, opens a list, channel, playlist or watch page, the feed refreshes subscribed channels, captions are shown",
+      "sends": "video id and a fixed public client description; a provider visitor id in memory only; no cookies, key, account or device identifier",
+      "requirement": "RES-01..07, DSC-01..18, SEL-06",
+      "files": [
+        "Core/Resolver/Infrastructure/YtDlpVideoService.cpp",
+        "Shared/SailTune/Core/SharedPlayback/Domain/InnerTubeClient.h",
+        "Shared/SailTune/Core/SharedPlayback/Infrastructure/FastStreamResolver.cpp",
+        "Shared/SailTune/Core/SharedPlayback/Infrastructure/FastStreamResolver.h",
+        "Core/Catalog/Infrastructure/InnerTubeClient.cpp",
+        "Core/Catalog/Infrastructure/ClientIdentity.cpp",
+        "Core/Catalog/Infrastructure/ChannelService.cpp",
+        "Core/Catalog/Infrastructure/WatchNextService.cpp",
+        "Core/Catalog/Infrastructure/RssParser.cpp",
+        "Core/Catalog/Domain/Captions.cpp",
+        "Clients/Sailfish/Composition/CatalogComposition.cpp",
+        "Clients/Sailfish/Presentation/DiscoverySearchModel.cpp"
+      ],
+      "reference_files": [
+        "Core/Catalog/Domain/Links.cpp",
+        "Core/Catalog/Domain/ChannelReference.cpp",
+        "Core/Catalog/Domain/Description.cpp",
+        "Clients/Sailfish/qml/logic/ShareLinks.js"
+      ],
+      "authenticated_files": [
+        "Core/Account/Infrastructure/AccountService.cpp",
+        "Core/Account/Infrastructure/AuthTransport.cpp"
+      ],
+      "authenticated_note": "Optional signed-in session (ACC-06/07/09, IMP-02), only after the user imports one: InnerTube WEB POSTs (account/account_menu, account/accounts_list, browse) with the imported cookies, a fresh SAPISIDHASH, Origin, Referer, X-Goog-AuthUser and, for a brand channel, X-Goog-PageId. Sent only to https://www.youtube.com by the account's own transport (no cookie jar of its own, no redirects followed). Signed out, nothing is sent."
+    },
+    "youtube.com": {
+      "kind": "match",
+      "purpose": "Host suffix accepted for live HLS manifests returned by the resolver (RES-22); no request of its own; also recognised in imported or pasted links (library import), where no request is made; recognised in opened, pasted and description links (catalog component, LNK-01/02); no request of its own",
+      "trigger": "a live stream is played",
+      "requirement": "RES-22",
+      "files": [
+        "Core/Resolver/Infrastructure/YtDlpJson.cpp"
+      ],
+      "reference_files": [
+        "Core/Library/Domain/LibraryPolicy.cpp",
+        "Core/Catalog/Domain/Links.cpp",
+        "Core/Catalog/Domain/ChannelReference.cpp",
+        "Core/Catalog/Domain/Description.cpp",
+        "Shared/SailTune/Core/Accounts/Infrastructure/SessionImportParser.cpp",
+        "Shared/SailTune/Core/Ytm/Sources/Infrastructure/GeckoCookieJarReader.cpp",
+        "Shared/SailTune/Core/Ytm/Transport/Domain/SetCookie.cpp"
+      ]
+    },
+    "googlevideo.com": {
+      "kind": "match",
+      "purpose": "Host suffix of media addresses accepted from the resolver (RES-22); the request goes to the resolved *.googlevideo.com host",
+      "trigger": "playback of a resolved stream",
+      "requirement": "RES-22",
+      "files": [
+        "Core/Resolver/Infrastructure/YtDlpJson.cpp"
+      ]
+    },
+    ".googlevideo.com": {
+      "kind": "request",
+      "purpose": "Media bytes of the chosen streams (probe, Range chunks through the loopback proxy, DASH fragments); downloads of the chosen streams (DL-02, Range resume); redirects followed only to https *.googlevideo.com, at most three hops (MediaAddress.h, shared by probe and proxy)",
+      "trigger": "playback of a resolved stream",
+      "sends": "the signed media address and fixed client headers",
+      "requirement": "RES-16..22, PLY-01..08",
+      "files": [
+        "Shared/SailTune/Core/SharedPlayback/Infrastructure/PlayerResponseParser.cpp",
+        "Shared/SailTune/Core/SharedPlayback/Infrastructure/MediaAddress.h",
+        "Core/Downloads/Infrastructure/DownloadEngine.cpp"
+      ]
+    },
+    "127.0.0.1": {
+      "kind": "loopback",
+      "purpose": "Shared media proxy: serves resolved streams to the local pipeline with a session token; never leaves the device. [FULL] Optional PO-token helper (RES-14): the yt-dlp child asks the user-enabled bgutil HTTP provider for a token at its verified 127.0.0.1 base URL; SailTube itself only reads /proc socket tables to verify the bind",
+      "trigger": "playback through the shared component; [FULL] an extractor resolve while the user-enabled PO-token helper is ready and the request asks for it",
+      "sends": "nothing external; to the PO helper: the extractor's token request (video id, client context), no cookies",
+      "requirement": "RES-17, NFR-SEC-02, RES-14, NFR-SEC-05",
+      "files": [
+        "Shared/SailTune/Core/SharedPlayback/Infrastructure/MediaProxy.cpp",
+        "Core/Resolver/Domain/PoTokenPolicy.cpp"
+      ]
+    },
+    "i.ytimg.com": {
+      "kind": "request",
+      "purpose": "Video thumbnails (addresses come from the resolver or catalog answers at run time); saved thumbnail of a download (DL-07)",
+      "trigger": "a list or video page is shown",
+      "sends": "the thumbnail address",
+      "requirement": "DSC-19",
+      "files": [
+        "Core/Downloads/Infrastructure/DownloadEngine.cpp",
+        "Core/Catalog/Domain/Images.cpp",
+        "Clients/Sailfish/Composition/CatalogComposition.cpp",
+        "Clients/Sailfish/Presentation/ImageCacheFactory.cpp",
+        "Clients/Sailfish/Presentation/PlaybackSession.cpp"
+      ]
+    },
+    ".ytimg.com": {
+      "kind": "request",
+      "purpose": "Thumbnail host suffix (i9.ytimg.com and similar) accepted by the shared image cache; image addresses come from catalog answers. Storyboard sheets for the scrub preview: the resolver keeps a sheet address only when it is https on this suffix under /sb/ (the image cache fetches it)",
+      "trigger": "a list or video page is shown; the seek bar is dragged on a video whose resolve answer carries a storyboard",
+      "sends": "the thumbnail or storyboard sheet address",
+      "requirement": "DSC-19",
+      "files": [
+        "Clients/Sailfish/Composition/CatalogComposition.cpp",
+        "Clients/Sailfish/Presentation/ImageCacheFactory.cpp",
+        "Core/Resolver/Infrastructure/YtDlpJson.cpp"
+      ]
+    },
+    "yt3.ggpht.com": {
+      "kind": "request",
+      "purpose": "Channel avatars and banners",
+      "trigger": "a channel or video page is shown",
+      "requirement": "DSC-12, DSC-19",
+      "files": [
+        "Clients/Sailfish/Composition/CatalogComposition.cpp",
+        "Clients/Sailfish/Presentation/ImageCacheFactory.cpp"
+      ],
+      "sends": "the avatar address"
+    },
+    ".googleusercontent.com": {
+      "kind": "request",
+      "purpose": "Channel and playlist artwork",
+      "trigger": "a channel or playlist is shown",
+      "requirement": "DSC-12, DSC-19",
+      "files": [
+        "Clients/Sailfish/Composition/CatalogComposition.cpp",
+        "Clients/Sailfish/Presentation/ImageCacheFactory.cpp"
+      ],
+      "sends": "the artwork address"
+    },
+    "suggestqueries.google.com": {
+      "kind": "request",
+      "purpose": "Search suggestions while typing",
+      "trigger": "the user types in search",
+      "requirement": "DSC-10",
+      "files": [
+        "Core/Catalog/Infrastructure/SuggestService.cpp",
+        "Clients/Sailfish/Composition/CatalogComposition.cpp"
+      ],
+      "sends": "the request language, the typed prefix"
+    },
+    "sponsor.ajay.app": {
+      "kind": "request",
+      "purpose": "SponsorBlock segments by hash prefix (opt-in)",
+      "trigger": "a video is played with SponsorBlock on",
+      "requirement": "SB-01",
+      "files": [
+        "Core/Catalog/Infrastructure/SponsorBlockService.cpp",
+        "Clients/Sailfish/Composition/CatalogComposition.cpp"
+      ],
+      "sends": "the first 4 hex characters of the SHA-256 of the video id; never the id"
+    },
+    "returnyoutubedislikeapi.com": {
+      "kind": "request",
+      "purpose": "Return YouTube Dislike counts (opt-in, off by default)",
+      "trigger": "a video page is shown with the option on",
+      "requirement": "RYD-01",
+      "files": [
+        "Core/Catalog/Infrastructure/DislikeService.cpp",
+        "Clients/Sailfish/Composition/CatalogComposition.cpp"
+      ],
+      "sends": "the video id"
+    },
+    "github.com": {
+      "kind": "request",
+      "purpose": "[FULL] extractor (yt-dlp) update metadata and downloads: HEAD of the channel's releases/latest/download/yt-dlp (the redirect names the tag = version), then GET releases/download/<tag>/SHA2-256SUMS and SHA2-256SUMS.sig and, after the user's confirmation, releases/download/<tag>/yt-dlp; redirects are followed by hand and only to the release asset hosts (Domain/ReleasePolicy RedirectChain)",
+      "trigger": "the user checks for an extractor update (stable or nightly channel) or confirms one",
+      "sends": "a fixed User-Agent (SailTube-extractor-update); no cookies, account or device identifier",
+      "requirement": "NFR-MNT-01, NFR-SEC-04",
+      "files": [
+        "Core/Extractor/Domain/ReleasePolicy.cpp"
+      ],
+      "variant": "FULL",
+      "reference_files": [
+        "Clients/Sailfish/Presentation/BetaStatus.h"
+      ]
+    },
+    "objects.githubusercontent.com": {
+      "kind": "request",
+      "purpose": "[FULL] release asset host GitHub redirects extractor update downloads to (signed, short-lived asset URL from github.com); bytes are bounded by the offered size and verified before use",
+      "trigger": "the user checks for or confirms an extractor update",
+      "sends": "the asset URL github.com redirected to; no cookies, account or device identifier",
+      "requirement": "NFR-MNT-01, NFR-SEC-04",
+      "files": [
+        "Core/Extractor/Domain/ReleasePolicy.cpp"
+      ],
+      "variant": "FULL"
+    },
+    "release-assets.githubusercontent.com": {
+      "kind": "request",
+      "purpose": "[FULL] GitHub's current release asset host for extractor update downloads (github.com redirects releases/download/<tag>/<file> here since 2025; objects.githubusercontent.com is the older one); bytes are bounded by the offered size and verified before use",
+      "trigger": "the user checks for or confirms an extractor update",
+      "sends": "the asset URL github.com redirected to; no cookies, account or device identifier",
+      "requirement": "NFR-MNT-01, NFR-SEC-04",
+      "files": [
+        "Core/Extractor/Domain/ReleasePolicy.cpp"
+      ],
+      "variant": "FULL"
+    }
+  },
+  "ignored_hosts": {
+    "youtube-nocookie.com": {
+      "files": [
+        "Core/Library/Domain/LibraryPolicy.cpp",
+        "Core/Catalog/Domain/Links.cpp"
+      ],
+      "reason": "recognised as a video link host in imported or pasted links; no request is ever made to it"
+    },
+    "www.youtube-nocookie.com": {
+      "files": [
+        "Core/Catalog/Domain/Links.cpp"
+      ],
+      "reason": "recognised as a video link host in opened, pasted or description links (catalog component, LNK-01/02); parsed only, no request is ever made to it"
+    },
+    "m.youtube.com": {
+      "files": [
+        "Core/Catalog/Domain/Links.cpp",
+        "Core/Catalog/Domain/ChannelReference.cpp",
+        "Core/Catalog/Domain/Description.cpp"
+      ],
+      "reason": "recognised as a video link host in opened, pasted or description links (catalog component, LNK-01/02); parsed only, no request is ever made to it"
+    },
+    "music.youtube.com": {
+      "files": [
+        "Core/Catalog/Domain/Links.cpp",
+        "Core/Catalog/Domain/ChannelReference.cpp",
+        "Shared/SailTune/Core/Accounts/Infrastructure/SessionImportParser.cpp",
+        "Shared/SailTune/Core/Ytm/Sources/Domain/CookieJarSelection.cpp"
+      ],
+      "reason": "recognised (and flagged as unsupported) in opened links and channel references (LNK-01); parsed only, no request is ever made to it"
+    },
+    "youtu.be": {
+      "files": [
+        "Core/Catalog/Domain/Description.cpp"
+      ],
+      "reason": "recognised as a video link host in opened, pasted or description links (catalog component, LNK-01/02); parsed only, no request is ever made to it"
+    },
+    "www.w3.org": {
+      "files": [
+        "Core/Catalog/Infrastructure/RssParser.cpp"
+      ],
+      "reason": "Atom XML namespace name compared while parsing channel feeds; never fetched"
+    },
+    "search.yahoo.com": {
+      "files": [
+        "Core/Catalog/Infrastructure/RssParser.cpp"
+      ],
+      "reason": "Media RSS XML namespace name compared while parsing channel feeds; never fetched"
+    },
+    "youtube.com": {
+      "reason": "cookie-domain matching of an imported session (ACC-03): the host is compared, never contacted; also cookie-domain matching (ACC-03) and user-facing instruction text on the account page; never contacted from these files",
+      "files": [
+        "Core/Account/Domain/AccountPolicy.cpp",
+        "Clients/Sailfish/qml/pages/AccountPage.qml",
+        "Clients/Sailfish/Presentation/AccountController.cpp"
+      ]
+    },
+    "google.com": {
+      "reason": "cookie-domain matching of an imported session (ACC-03): the host is compared, never contacted; cookie domain, or a redirect host recognised when classifying an expired session (ACC-09); no request is made from this file",
+      "files": [
+        "Core/Account/Domain/AccountPolicy.cpp",
+        "Shared/SailTune/Core/Accounts/Infrastructure/SessionExpiryDetector.cpp",
+        "Shared/SailTune/Core/Ytm/Sources/Domain/CookieJarSelection.cpp",
+        "Shared/SailTune/Core/Ytm/Sources/Infrastructure/GeckoCookieJarReader.cpp",
+        "Shared/SailTune/Core/Ytm/Transport/Domain/SetCookie.cpp"
+      ]
+    },
+    ".youtube.com": {
+      "reason": "cookie-domain matching of an imported session (ACC-03): the host is compared, never contacted; cookie domain matched while importing or rotating an account session (ACC-03/04/08); no request is made from this file; also the cookie domain given to a pasted session (ACC-04), never contacted from these files",
+      "files": [
+        "Core/Account/Domain/AccountPolicy.cpp",
+        "Shared/SailTune/Core/Accounts/Infrastructure/SessionImportParser.cpp",
+        "Shared/SailTune/Core/Ytm/Sources/Domain/CookieJarSelection.cpp",
+        "Shared/SailTune/Core/Ytm/Sources/Infrastructure/GeckoCookieJarReader.cpp",
+        "Shared/SailTune/Core/Ytm/Transport/Domain/SetCookie.cpp",
+        "Core/Account/Infrastructure/PinnedSessionParser.cpp"
+      ]
+    },
+    "www.youtube.com": {
+      "reason": "the SAPISIDHASH origin string (ACC-06); requests are made by the authenticated files of www.youtube.com",
+      "files": [
+        "Core/Account/Domain/AccountPolicy.h"
+      ]
+    },
+    ".music.youtube.com": {
+      "files": [
+        "Shared/SailTune/Core/Accounts/Infrastructure/SessionImportParser.cpp",
+        "Shared/SailTune/Core/Ytm/Sources/Domain/CookieJarSelection.cpp"
+      ],
+      "reason": "cookie domain matched while importing or rotating an account session (ACC-03/04/08); no request is made from this file"
+    },
+    ".google.com": {
+      "files": [
+        "Shared/SailTune/Core/Ytm/Sources/Domain/CookieJarSelection.cpp",
+        "Shared/SailTune/Core/Ytm/Sources/Infrastructure/GeckoCookieJarReader.cpp",
+        "Shared/SailTune/Core/Ytm/Transport/Domain/SetCookie.cpp"
+      ],
+      "reason": "cookie domain matched while importing or rotating an account session (ACC-03/04/08); no request is made from this file"
+    },
+    "accounts.google.com": {
+      "files": [
+        "Shared/SailTune/Core/Accounts/Infrastructure/SessionExpiryDetector.cpp"
+      ],
+      "reason": "redirect host recognised when classifying a session answer as expired or consent-walled (ACC-09); never requested"
+    },
+    "accounts.youtube.com": {
+      "files": [
+        "Shared/SailTune/Core/Accounts/Infrastructure/SessionExpiryDetector.cpp"
+      ],
+      "reason": "redirect host recognised when classifying a session answer as expired or consent-walled (ACC-09); never requested"
+    },
+    "consent.google.com": {
+      "files": [
+        "Shared/SailTune/Core/Accounts/Infrastructure/SessionExpiryDetector.cpp"
+      ],
+      "reason": "redirect host recognised when classifying a session answer as expired or consent-walled (ACC-09); never requested"
+    },
+    "consent.youtube.com": {
+      "files": [
+        "Shared/SailTune/Core/Accounts/Infrastructure/SessionExpiryDetector.cpp"
+      ],
+      "reason": "redirect host recognised when classifying a session answer as expired or consent-walled (ACC-09); never requested"
+    }
+  },
+  "network_api_files": {
+    "Clients/Sailfish/Composition/main.cpp": "wiring: one QNetworkAccessManager (thumbnails with a private disk cache, DASH index reads)",
+    "Clients/Sailfish/Presentation/PlaybackSession.cpp": "downloads the MPRIS / cover artwork (the video's thumbnail URL from the open hints or details, i.ytimg.com) into the app cache so the lock screen gets a local artUrl (MPR-01); no other request",
+    "Core/Media/Infrastructure/DashManifestPreparer.h": "two bounded Range GETs per adaptive attempt to read the MP4 index of the chosen streams",
+    "Core/Media/Infrastructure/DashManifestPreparer.cpp": "two bounded Range GETs per adaptive attempt to read the MP4 index of the chosen streams",
+    "Shared/Runtime/Python/resolver.py": "AF_UNIX local timing channel only; yt-dlp itself makes the remote requests (dynamic_network_sources)",
+    "Shared/SailTune/Core/SharedPlayback/Infrastructure/HttpsConnection.h": "shared fast path: one keep-alive HTTPS connection to the player host or, for the probe, to the media host",
+    "Shared/SailTune/Core/SharedPlayback/Infrastructure/HttpsConnection.cpp": "shared fast path: one keep-alive HTTPS connection to the player host or, for the probe, to the media host",
+    "Shared/SailTune/Core/SharedPlayback/Infrastructure/MediaProxy.h": "shared loopback media proxy (127.0.0.1, token) fetching bounded Range chunks from the media host",
+    "Shared/SailTune/Core/SharedPlayback/Infrastructure/MediaProxy.cpp": "shared loopback media proxy (127.0.0.1, token) fetching bounded Range chunks from the media host",
+    "Core/Resolver/Infrastructure/PoTokenProvider.cpp": "[FULL] RES-14 PO-token helper manager: QTcpServer bound to 127.0.0.1 port 0 only to pick a free loopback port for the helper, closed at once; no request of its own",
+    "Core/Downloads/Infrastructure/DownloadEngine.h": "download engine (DL-02): own QNetworkAccessManager, https *.googlevideo.com media and i.ytimg.com thumbnails only, Range resume",
+    "Core/Downloads/Infrastructure/DownloadEngine.cpp": "download engine (DL-02): own QNetworkAccessManager, https *.googlevideo.com media and i.ytimg.com thumbnails only, Range resume",
+    "Core/Catalog/Infrastructure/HttpTransport.h": "catalog component: the one QNetworkAccessManager wrapper (two instances, interactive and background, RES-02), no cookies kept, fixed public client headers",
+    "Core/Catalog/Infrastructure/HttpTransport.cpp": "catalog component: the one QNetworkAccessManager wrapper (two instances, interactive and background, RES-02), no cookies kept, fixed public client headers",
+    "Clients/Sailfish/Presentation/ImageCacheFactory.h": "catalog component: QML image loader with one shared bounded disk cache, image hosts only (DSC-19)",
+    "Clients/Sailfish/Presentation/ImageCacheFactory.cpp": "catalog component: QML image loader with one shared bounded disk cache, image hosts only (DSC-19)",
+    "Core/Account/Infrastructure/AuthTransport.h": "the optional account's own transport (ACC-06): HTTPS POSTs to www.youtube.com only, no cookie jar, no redirects",
+    "Core/Account/Infrastructure/AuthTransport.cpp": "the optional account's own transport (ACC-06): HTTPS POSTs to www.youtube.com only, no cookie jar, no redirects",
+    "Clients/Sailfish/Presentation/PlaybackSession.h": "downloads the MPRIS / cover artwork (the video's thumbnail URL from the open hints or details, i.ytimg.com) into the app cache so the lock screen gets a local artUrl (MPR-01); no other request",
+    "Core/Extractor/Infrastructure/ExtractorUpdater.h": "[FULL] extractor update (NFR-MNT-01): its own QNetworkAccessManager, HEAD/GET to github.com and the two release asset hosts only, redirects followed by hand and re-checked per hop, certificates verified (never ignored), no cookies or cache, bodies bounded",
+    "Core/Extractor/Infrastructure/ExtractorUpdater.cpp": "[FULL] extractor update (NFR-MNT-01): its own QNetworkAccessManager, HEAD/GET to github.com and the two release asset hosts only, redirects followed by hand and re-checked per hop, certificates verified (never ignored), no cookies or cache, bodies bounded"
+  },
+  "dynamic_url_files": {},
+  "forbidden_term_exceptions": {},
+  "dynamic_network_sources": [
+    {
+      "name": "Resolved media and thumbnail addresses",
+      "detail": "Hosts of stream, manifest and thumbnail addresses come from the resolver at run time. Stream addresses are accepted only by acceptedMediaUrl (https, port 443, *.googlevideo.com /videoplayback; HLS also youtube.com) and the shared parser's googlevideo rule.",
+      "trigger": "user plays a video or views a list"
+    },
+    {
+      "name": "[FULL] PO-token helper (RES-14)",
+      "detail": "Opt-in, off by default, aarch64 only. A separate Deno process running the pinned bgutil HTTP provider (Core/Resolver/Infrastructure/PoTokenProvider.cpp, command line in Core/Resolver/Domain/PoTokenPolicy.cpp). Its own network use is unrestricted by design (Deno --allow-net; a host allow-list killed token minting) and is the provider's: it contacts the provider's attestation endpoints while minting a token, and its frozen install fetches the locked npm/JSR packages. It reads only its own directory and may not write, run programs or load native code. SailTube talks to it on 127.0.0.1 only and refuses and stops it if any of its sockets listens elsewhere. It never gets cookies, account data or the app's environment.",
+      "trigger": "the user enables the PO-token provider (install and start), then extractor resolves while it is ready"
+    },
+    {
+      "name": "yt-dlp / QuickJS resolver child",
+      "detail": "The bundled resolver process contacts the provider on its own while a user-initiated search or resolution runs; static analysis of its code is out of scope.",
+      "trigger": "user searches or plays a video"
+    }
+  ],
+  "build_permissions": {
+    "note": "Reviewed baseline of what the package may request (PLT-04). A change is a privacy decision: edit together with docs/PRIVACY_NETWORK.md. Local-only additions: sql + sqlite driver (library store), zlib (import archives), Nemo.Notifications (download finished), Sailfish.Pickers (import file), DownloadsView (the downloads page and section) opens a downloaded local file in the system player until PLY-26.",
+    "sailjail_permissions": [
+      "Internet",
+      "Audio"
+    ],
+    "qt_modules": [
+      "quick",
+      "qml",
+      "multimedia",
+      "network",
+      "sql"
+    ],
+    "spec_requires": [
+      "BuildRequires: pkgconfig(sailfishapp)",
+      "BuildRequires: qt5-qttools-linguist",
+      "BuildRequires: pkgconfig(Qt5Multimedia)",
+      "BuildRequires: pkgconfig(Qt5Network)",
+      "BuildRequires: pkgconfig(Qt5Quick)",
+      "BuildRequires: pkgconfig(Qt5DBus)",
+      "Requires: sailfishsilica-qt5",
+      "Requires: qt5-qtmultimedia-plugin-mediaservice-gstmediaplayer",
+      "Requires: qt5-plugin-imageformat-jpeg",
+      "Requires: qml(Nemo.KeepAlive)",
+      "Requires: qml(Amber.Mpris)",
+      "Requires: pyotherside-qml-plugin-python3-qt5",
+      "BuildRequires: pkgconfig(Qt5Sql)",
+      "BuildRequires: pkgconfig(zlib)",
+      "Requires: qt5-plugin-sqldriver-sqlite",
+      "Requires: nemo-qml-plugin-notifications-qt5",
+      "BuildRequires: pkgconfig(audioresource-qt)",
+      "BuildRequires: pkgconfig(gstreamer-1.0)",
+      "BuildRequires: pkgconfig(gstreamer-app-1.0)",
+      "BuildRequires: pkgconfig(gstreamer-video-1.0)",
+      "BuildRequires: pkgconfig(nemo-gstreamer-interfaces-1.0)",
+      "BuildRequires: pkgconfig(egl)",
+      "BuildRequires: pkgconfig(glesv2)"
+    ],
+    "qml_imports": [
+      "QtQuick",
+      "QtQml",
+      "Sailfish.Silica",
+      "Nemo.KeepAlive",
+      "Amber.Mpris",
+      "io.thp.pyotherside",
+      "org.nordilabs.sailtube",
+      "Nemo.Notifications",
+      "Sailfish.Pickers"
+    ],
+    "qml_forbidden_import_prefixes": [
+      "QtWebKit",
+      "QtWebEngine",
+      "QtWebView",
+      "QtWebSockets",
+      "QtWebChannel",
+      "Sailfish.WebView",
+      "Nemo.Connectivity",
+      "QtBluetooth",
+      "QtNfc",
+      "QtPositioning",
+      "QtLocation",
+      "QtSensors",
+      "QtContacts",
+      "QtOrganizer",
+      "QtPurchasing"
+    ],
+    "qml_external_open_files": [
+      "Clients/Sailfish/qml/components/DownloadsView.qml",
+      "Clients/Sailfish/qml/pages/VideoPage.qml",
+      "Clients/Sailfish/qml/pages/VideoDetailsPage.qml",
+      "Clients/Sailfish/qml/pages/AboutPage.qml"
+    ]
+  }
+}

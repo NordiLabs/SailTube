@@ -1,0 +1,29 @@
+{
+ "playabilityStatus": {
+  "reason": "Sign in to confirm your age",
+  "status": "LOGIN_REQUIRED"
+ },
+ "responseContext": {
+  "visitorData": "SYNTHETICVISITORDATA"
+ },
+ "videoDetails": {
+  "author": "Synthetic Artist - Topic",
+  "lengthSeconds": "211",
+  "thumbnail": {
+   "thumbnails": [
+    {
+     "height": 90,
+     "url": "https://i.ytimg.com/vi/AAAAAAAAAAA/default.jpg",
+     "width": 120
+    },
+    {
+     "height": 360,
+     "url": "https://i.ytimg.com/vi/AAAAAAAAAAA/hqdefault.jpg",
+     "width": 480
+    }
+   ]
+  },
+  "title": "Synthetic Song",
+  "videoId": "AAAAAAAAAAA"
+ }
+}

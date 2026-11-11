@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=Application
+Name=SailTube
+Icon=harbour-sailtube
+Exec=harbour-sailtube
+X-Nemo-Application-Type=silica-qt5
+MimeType=x-url-handler/youtube.com;x-url-handler/www.youtube.com;x-url-handler/m.youtube.com;x-url-handler/youtu.be;x-url-handler/www.youtube-nocookie.com;
+X-Maemo-Service=org.nordilabs.sailtube.SailTube
+X-Maemo-Object-Path=/
+X-Maemo-Method=org.nordilabs.sailtube.SailTube.openUrl
+
+[X-Sailjail]
+Permissions=Internet;Audio
+OrganizationName=org.nordilabs.sailtube
+ApplicationName=SailTube
+ExecDBus=/usr/bin/harbour-sailtube

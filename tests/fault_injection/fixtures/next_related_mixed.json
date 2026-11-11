@@ -1,0 +1,45 @@
+{
+  "responseContext": {"note": "synthetic fault-injection fixture: watch-next with info and a related list holding bad rows"},
+  "contents": {
+    "twoColumnWatchNextResults": {
+      "results": {"results": {"contents": [
+        {"videoPrimaryInfoRenderer": {
+          "title": {"runs": [{"text": "Fault seed video"}]},
+          "viewCount": {"videoViewCountRenderer": {"viewCount": {"simpleText": "1,234 views"}}},
+          "dateText": {"simpleText": "Nov 1, 2026"}
+        }},
+        {"videoSecondaryInfoRenderer": {
+          "owner": {"videoOwnerRenderer": {
+            "title": {"runs": [{"text": "Fault Channel", "navigationEndpoint": {"browseEndpoint": {"browseId": "UCfaultChannel0000000001"}}}]},
+            "subscriberCountText": {"simpleText": "12 subscribers"}
+          }},
+          "description": {"runs": [{"text": "Synthetic description"}]}
+        }}
+      ]}},
+      "secondaryResults": {"secondaryResults": {"results": [
+        {"compactVideoRenderer": {
+          "videoId": "fiRelated01",
+          "title": {"simpleText": "Related healthy one"},
+          "lengthText": {"simpleText": "10:00"},
+          "publishedTimeText": {"simpleText": "3 days ago"},
+          "viewCountText": {"simpleText": "100 views"}
+        }},
+        {"compactVideoRenderer": {"title": {"simpleText": "Bad related row: no id"}, "lengthText": {"simpleText": "1:00"}}},
+        {"compactVideoRenderer": "bad related row: not an object"},
+        {"futureRelatedViewModel": {"videoId": "fiRelated99"}},
+        {"compactVideoRenderer": {
+          "videoId": "fiSeedVideo",
+          "title": {"simpleText": "The seed itself (excluded)"},
+          "lengthText": {"simpleText": "2:00"}
+        }},
+        {"compactVideoRenderer": {
+          "videoId": "fiRelated02",
+          "title": {"simpleText": "Related healthy two"},
+          "lengthText": {"simpleText": "garbage length"},
+          "viewCountText": {"simpleText": "lots of views"}
+        }},
+        {"continuationItemRenderer": {"continuationEndpoint": {"continuationCommand": {"token": "FI-RELATED-2"}}}}
+      ]}}
+    }
+  }
+}

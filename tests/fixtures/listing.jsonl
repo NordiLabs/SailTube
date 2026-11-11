@@ -1,0 +1,5 @@
+{"id": "aBcDeFgHiJk", "title": "First", "channel": "One", "channel_id": "UC0123456789abcdefABCDEF", "duration": 61, "view_count": 1500, "thumbnails": [{"url": "https://img.example/1/a.jpg", "width": 360, "height": 202}, {"url": "https://img.example/1/b.jpg", "width": 720, "height": 404}]}
+{"id": "bad id", "title": "Rejected"}
+{"id": "zYxWvUtSrQp", "title": "Live one", "uploader": "Two", "live_status": "is_live", "thumbnails": []}
+{"id": "aBcDeFgHiJk", "title": "Duplicate"}
+not json

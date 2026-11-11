@@ -1,0 +1,104 @@
+{
+ "schema": 1,
+ "about": "NFR-SEC-04: reasoned exceptions of tools/check_runtime_downloads.py. 'match' is a substring of the flagged source line; an exception that matches nothing fails the check. 'variant': 'full' entries are ignored by --variant store. Keep this list short; see docs/SECURITY_CHECKS.md.",
+ "exceptions": [
+  {
+   "file": "Core/Worker/Runtime/worker.py",
+   "rule": "RD-CODE-WRITE",
+   "match": "os.open(loaded, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)",
+   "variant": "all",
+   "reason": "NFR-ROB-04: the warm worker copies the BUNDLED yt-dlp.pyz into its private 0700 work directory (0600, deleted when the worker exits) so a package update mid-session cannot break zipimport offsets. The source is NORDTILE_WORKER_ARCHIVE, which WarmResolver sets from runtimeFile(\"runtime/yt-dlp.pyz\"); the checker verifies that origin as install. Nothing is downloaded."
+  },
+  {
+   "file": "Core/Worker/Runtime/worker.py",
+   "rule": "RD-LOADPATH",
+   "match": "sys.path[:] = [loaded, here] + sorted(allowed)",
+   "variant": "all",
+   "reason": "Same private copy of the bundled archive: `loaded` lives in NORDTILE_WORKER_DIR (WarmResolver's 0700 workDirectory under the cache location), hence the writable/env origin. Only the copy just written from the install is put on sys.path, followed by the worker's own directory and the stdlib; user site and PYTHONPATH are stripped by the host."
+  },
+  {
+   "file": "Core/Resolver/Infrastructure/YtDlpRunner.cpp",
+   "rule": "RD-PROC",
+   "match": "job->process->start(options_.executablePath, job->arguments",
+   "variant": "all",
+   "reason": "The program is the application binary itself (QCoreApplication::applicationFilePath, install) except for the development override SAILTUBE_DEVELOPMENT_YTDLP in main.cpp, an executable a developer names in their own environment. The app never downloads or writes that file; YtDlpRunner::available() requires an absolute, existing, executable path."
+  },
+  {
+   "file": "Core/Downloads/Infrastructure/GstRemuxer.cpp",
+   "rule": "RD-DLOPEN",
+   "match": "QLibrary gst(gstLibrary, 0);",
+   "variant": "all",
+   "reason": "The GStreamer library name passes through GstRemuxer's constructor. The only shipped construction is the default GstRemuxer() = \"gstreamer-1.0\" (main.cpp: `downloads::GstRemuxer remuxer;`), a bare soname the system linker resolves; the name-taking constructor exists for tests."
+  },
+  {
+   "file": "Core/Account/Infrastructure/BrowserCookieImport.cpp",
+   "rule": "RD-EXEC-MODE",
+   "match": "if (ok) QFile::setPermissions(path, QFileDevice::ReadOwner | QFileDevice::WriteOwner | QFileDevice::ExeOwner);",
+   "variant": "all",
+   "reason": "NFR-SEC-03: makePrivateDir() narrows a private DIRECTORY (the browser-import scratch tree) to 0700; the owner execute bit is the directory search permission. No file is made executable."
+  },
+  {
+   "file": "Core/Player/Infrastructure/TempDirSetup.cpp",
+   "rule": "RD-EXEC-MODE",
+   "match": "QFile::setPermissions(path, QFileDevice::ReadOwner | QFileDevice::WriteOwner | QFileDevice::ExeOwner);",
+   "variant": "all",
+   "reason": "PLT-09: makes the app's private flash TMPDIR owner-only (rwx------); the x bit on a directory is traversal, nothing is executed from it."
+  },
+  {
+   "file": "Core/Resolver/Domain/PoTokenPolicy.cpp",
+   "rule": "RD-FLAG",
+   "match": "a.push_back(\"--plugin-dirs\");",
+   "variant": "full",
+   "reason": "RES-14 [FULL, opt-in, off by default]: --plugin-dirs points yt-dlp at the user-installed, hash-pinned bgutil plugin under the app's private data dir; never downloaded by the app at run time, refused without a reviewed pin (none is built in for the beta)."
+  },
+  {
+   "file": "Core/Resolver/Infrastructure/PoTokenProvider.cpp",
+   "rule": "RD-PROC",
+   "match": "p->start(q(c.program), arguments(c), QIODevice::ReadOnly);",
+   "variant": "full",
+   "reason": "RES-14 [FULL, opt-in]: runs the pinned Deno binary (hash-checked against the build's reviewed pin before every start; refused without one) with --deny-write/run/ffi, read only its own directory, and only after the user enables the helper; verified to listen on 127.0.0.1 only."
+  },
+  {
+   "file": "Core/Extractor/Domain/ReleasePolicy.cpp",
+   "rule": "RD-URL",
+   "match": "\"/releases/latest/download/\" + file",
+   "variant": "full",
+   "reason": "NFR-MNT-01 [FULL] extractor update (core component), compiled only inside `!sailtube_store { }` (the header #errors on SAILTUBE_STORE). The channel's latest/download URL on github.com, used only for a HEAD that learns the tag (version) and size from the redirect; every hop is re-checked by RedirectChain (https, 443, github.com then the two asset hosts, no user info). Nothing is installed without the signed SHA2-256SUMS (pinned yt-dlp key), the archive checks and the user's confirmation of source, version and size (docs/EXTRACTOR_UPDATE.md)."
+  },
+  {
+   "file": "Core/Extractor/Domain/ReleasePolicy.cpp",
+   "rule": "RD-URL",
+   "match": "\"/releases/download/\" + tag + \"/\" + file",
+   "variant": "full",
+   "reason": "NFR-MNT-01 [FULL] extractor update (core component), compiled only inside `!sailtube_store { }` (the header #errors on SAILTUBE_STORE). The tagged release URL of the offered version: SHA2-256SUMS, SHA2-256SUMS.sig and the yt-dlp archive. The archive is a zipimport data file that the warm worker imports; it is staged 0600 in a 0700 directory, verified by verify_release.py (detached OpenPGP signature over SHA2-256SUMS by the pinned release key, SHA-256, plain relative zip entries, version) and only then renamed into place; it is never executed or extracted."
+  },
+  {
+   "file": "Core/Extractor/Domain/ReleasePolicy.cpp",
+   "rule": "RD-URL",
+   "match": "host == \"objects.githubusercontent.com\" || host == \"release-assets.githubusercontent.com\"",
+   "variant": "full",
+   "reason": "NFR-MNT-01 [FULL] extractor update (core component), compiled only inside `!sailtube_store { }` (the header #errors on SAILTUBE_STORE). The allow-list of GitHub's release asset hosts: the only hosts a github.com release download may redirect to. A comparison, not a fetch; the content is verified as for the tagged URL."
+  },
+  {
+   "file": "Core/Extractor/Infrastructure/ExtractorUpdater.cpp",
+   "rule": "RD-PROC",
+   "match": "if (!p->startHelper(options.program, arguments)) {",
+   "variant": "full",
+   "reason": "NFR-MNT-01 [FULL] extractor update (core component), compiled only inside `!sailtube_store { }` (the header #errors on SAILTUBE_STORE). processVerifier(): the program is the one main.cpp passes, QCoreApplication::applicationFilePath() (install), in its warm-worker mode with NORDTILE_WORKER_TASK=verify, which runs the installed verify_release.py with the installed, pinned key (tests pass python3 -I verify_release.py). The downloaded archive is an input file of the verifier, never a program."
+  },
+  {
+   "file": "Core/Resolver/Infrastructure/YtDlpVideoService.cpp",
+   "rule": "RD-FLAG",
+   "match": "option == QLatin1String(\"--plugin-dirs\")",
+   "variant": "all",
+   "reason": "An allow-filter, not a source: only the PO-token manager's --plugin-dirs/youtubepot-* pairs pass to yt-dlp, anything else drops them. On STORE the manager is not compiled and the list is always empty."
+  },
+  {
+   "file": "Clients/Sailfish/Presentation/BetaStatus.h",
+   "rule": "RD-URL",
+   "match": "QStringLiteral(\"https://github.com/NordiLabs/SailTube/releases\")",
+   "variant": "full",
+   "reason": "Beta builds only: the About page's \"Open the download page\" button hands this releases page to the system browser (Qt.openUrlExternally). The app itself never fetches it and downloads nothing from it."
+  }
+ ]
+}

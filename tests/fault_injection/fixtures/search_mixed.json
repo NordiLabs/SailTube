@@ -1,0 +1,46 @@
+{
+  "responseContext": {"note": "synthetic fault-injection fixture"},
+  "contents": {
+    "twoColumnSearchResultsRenderer": {
+      "primaryContents": {
+        "sectionListRenderer": {
+          "contents": [
+            {
+              "itemSectionRenderer": {
+                "contents": [
+                  {"videoRenderer": {
+                    "videoId": "fiSearch001",
+                    "title": {"runs": [{"text": "Healthy row one"}]},
+                    "ownerText": {"runs": [{"text": "Fault Channel", "navigationEndpoint": {"browseEndpoint": {"browseId": "UCfaultChannel0000000001"}}}]},
+                    "lengthText": {"simpleText": "4:01"},
+                    "viewCountText": {"simpleText": "1,234 views"},
+                    "publishedTimeText": {"simpleText": "2 days ago"}
+                  }},
+                  {"videoRenderer": {
+                    "title": {"runs": [{"text": "Bad row: no video id"}]},
+                    "lengthText": {"simpleText": "1:00"}
+                  }},
+                  {"videoRenderer": ["bad row: renderer is not an object"]},
+                  {"futureShelfViewModel": {"items": [{"videoId": "fiSearch099"}]}},
+                  {"videoRenderer": {
+                    "videoId": "fiSearch002",
+                    "title": {"simpleText": "Healthy row two"},
+                    "lengthText": {"simpleText": "12:00"},
+                    "viewCountText": {"simpleText": "not a number views"},
+                    "publishedTimeText": {"simpleText": "sometime, somewhere"}
+                  }},
+                  {"channelRenderer": {
+                    "channelId": "UCfaultChannel0000000002",
+                    "title": {"simpleText": "Healthy channel row"}
+                  }},
+                  {"channelRenderer": {"title": {"simpleText": "Bad channel row: no id"}}}
+                ]
+              }
+            },
+            {"continuationItemRenderer": {"continuationEndpoint": {"continuationCommand": {"token": "FI-SEARCH-PAGE-2"}}}}
+          ]
+        }
+      }
+    }
+  }
+}

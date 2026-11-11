@@ -1,0 +1,19 @@
+{
+  "responseContext": {"note": "synthetic fault-injection fixture: one replies page, @TH@ is replaced by the test"},
+  "onResponseReceivedEndpoints": [
+    {"appendContinuationItemsAction": {
+      "continuationItems": [
+        {"commentViewModel": {"commentViewModel": {"commentKey": "FI-RKEY-@TH@-1", "commentId": "Ugx@TH@.reply1"}}},
+        {"commentViewModel": {"commentViewModel": {"commentKey": "FI-RKEY-@TH@-MISSING", "commentId": "Ugx@TH@.reply2"}}}
+      ]
+    }}
+  ],
+  "frameworkUpdates": {"entityBatchUpdate": {"mutations": [
+    {"entityKey": "FI-RKEY-@TH@-1", "payload": {"commentEntityPayload": {
+      "key": "FI-RKEY-@TH@-1",
+      "properties": {"commentId": "Ugx@TH@.reply1", "content": {"content": "A reply"}, "publishedTime": "1 day ago", "replyLevel": 1},
+      "author": {"displayName": "@replier"},
+      "toolbar": {"likeCountNotliked": "1"}
+    }}}
+  ]}}
+}

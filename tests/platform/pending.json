@@ -1,0 +1,3 @@
+{
+  "note": "Shrink-only waivers for invariant rows another component still owes. Each entry names its owner and requirement; tools/platform_check.py warns for a waived item and fails as soon as the waiver is no longer needed. Never add entries for new code: give it its row instead."
+}

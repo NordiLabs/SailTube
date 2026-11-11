@@ -1,0 +1,110 @@
+{
+ "playabilityStatus": {
+  "status": "OK"
+ },
+ "playerConfig": {
+  "audioConfig": {
+   "enablePerFormatLoudness": true,
+   "loudnessTargetLkfs": -14,
+   "perceptualLoudnessDb": -10.55,
+   "trackAbsoluteLoudnessLkfs": -10.55
+  }
+ },
+ "responseContext": {
+  "visitorData": "SYNTHETICVISITORDATA"
+ },
+ "streamingData": {
+  "adaptiveFormats": [
+   {
+    "approxDurationMs": "211000",
+    "audioChannels": 2,
+    "audioQuality": "AUDIO_QUALITY_MEDIUM",
+    "audioSampleRate": "44100",
+    "audioTrack": {
+     "audioIsDefault": true,
+     "displayName": "English (original)",
+     "id": "en.4"
+    },
+    "averageBitrate": 149000,
+    "bitrate": 150000,
+    "contentLength": "8000000",
+    "itag": 251,
+    "mimeType": "audio/webm; codecs=\"opus\"",
+    "url": "https://rr1---sn-test.googlevideo.com/videoplayback?expire=4102444800&ei=SYNTHETIC&ip=0.0.0.0&id=o-SYNTHETIC&itag=251&source=youtube&sig=SYNTHETIC"
+   },
+   {
+    "approxDurationMs": "211000",
+    "audioChannels": 2,
+    "audioQuality": "AUDIO_QUALITY_MEDIUM",
+    "audioSampleRate": "44100",
+    "audioTrack": {
+     "audioIsDefault": true,
+     "displayName": "English (original)",
+     "id": "en.4"
+    },
+    "averageBitrate": 49000,
+    "bitrate": 50000,
+    "contentLength": "2000000",
+    "itag": 139,
+    "mimeType": "audio/mp4; codecs=\"mp4a.40.5\"",
+    "url": "https://rr1---sn-test.googlevideo.com/videoplayback?expire=4102444800&ei=SYNTHETIC&ip=0.0.0.0&id=o-SYNTHETIC&itag=139&source=youtube&sig=SYNTHETIC"
+   },
+   {
+    "approxDurationMs": "211000",
+    "audioChannels": 2,
+    "audioQuality": "AUDIO_QUALITY_MEDIUM",
+    "audioSampleRate": "44100",
+    "audioTrack": {
+     "audioIsDefault": false,
+     "displayName": "Spanish",
+     "id": "es.3"
+    },
+    "averageBitrate": 149000,
+    "bitrate": 150000,
+    "contentLength": "8000000",
+    "itag": 251,
+    "mimeType": "audio/webm; codecs=\"opus\"",
+    "url": "https://rr1---sn-test.googlevideo.com/videoplayback?expire=4102444800&ei=SYNTHETIC&ip=0.0.0.0&id=o-SYNTHETIC&itag=2510&source=youtube&sig=SYNTHETIC"
+   },
+   {
+    "approxDurationMs": "211000",
+    "audioChannels": 2,
+    "audioQuality": "AUDIO_QUALITY_MEDIUM",
+    "audioSampleRate": "44100",
+    "audioTrack": {
+     "audioIsDefault": false,
+     "displayName": "French descriptive",
+     "id": "fr.3"
+    },
+    "averageBitrate": 150000,
+    "bitrate": 151000,
+    "contentLength": "8000000",
+    "itag": 251,
+    "mimeType": "audio/webm; codecs=\"opus\"",
+    "url": "https://rr1---sn-test.googlevideo.com/videoplayback?expire=4102444800&ei=SYNTHETIC&ip=0.0.0.0&id=o-SYNTHETIC&itag=2511&source=youtube&sig=SYNTHETIC"
+   }
+  ],
+  "expiresInSeconds": "21540",
+  "hlsManifestUrl": "https://manifest.googlevideo.com/api/manifest/hls_variant/synthetic/file/index.m3u8"
+ },
+ "videoDetails": {
+  "author": "Synthetic Artist - Topic",
+  "lengthSeconds": "211",
+  "thumbnail": {
+   "thumbnails": [
+    {
+     "height": 90,
+     "url": "https://i.ytimg.com/vi/AAAAAAAAAAA/default.jpg",
+     "width": 120
+    },
+    {
+     "height": 360,
+     "url": "https://i.ytimg.com/vi/AAAAAAAAAAA/hqdefault.jpg",
+     "width": 480
+    }
+   ]
+  },
+  "title": "Synthetic Song",
+  "videoId": "AAAAAAAAAAA"
+ }
+}

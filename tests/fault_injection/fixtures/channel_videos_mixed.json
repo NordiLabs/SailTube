@@ -1,0 +1,51 @@
+{
+  "responseContext": {"note": "synthetic fault-injection fixture: a channel Videos tab, @CH@ and @T@ are replaced by the test"},
+  "metadata": {"channelMetadataRenderer": {"externalId": "@CH@", "title": "Fault channel @T@", "description": "synthetic"}},
+  "contents": {
+    "twoColumnBrowseResultsRenderer": {
+      "tabs": [
+        {"tabRenderer": {
+          "endpoint": {
+            "browseEndpoint": {"browseId": "@CH@", "params": "EghmZWF0dXJlZPIGBAoCMgA%3D"},
+            "commandMetadata": {"webCommandMetadata": {"url": "/channel/@CH@/featured"}}
+          },
+          "title": "Home"
+        }},
+        {"tabRenderer": {
+          "endpoint": {
+            "browseEndpoint": {"browseId": "@CH@", "params": "EgZ2aWRlb3PyBgQKAjoA"},
+            "commandMetadata": {"webCommandMetadata": {"url": "/channel/@CH@/videos"}}
+          },
+          "title": "Videos",
+          "selected": true,
+          "content": {
+            "richGridRenderer": {
+              "contents": [
+                {"richItemRenderer": {"content": {"videoRenderer": {
+                  "videoId": "fi@T@tab00001",
+                  "title": {"runs": [{"text": "Tab row one"}]},
+                  "lengthText": {"simpleText": "10:00"},
+                  "publishedTimeText": {"simpleText": "2 days ago"},
+                  "viewCountText": {"simpleText": "10 views"}
+                }}}},
+                {"richItemRenderer": {"content": {"videoRenderer": {
+                  "title": {"runs": [{"text": "Bad tab row: no id"}]},
+                  "publishedTimeText": {"simpleText": "3 days ago"}
+                }}}},
+                {"richItemRenderer": {"content": {"videoRenderer": "bad tab row: not an object"}}},
+                {"futureGridItemViewModel": {"videoId": "fi@T@tab00099"}},
+                {"richItemRenderer": {"content": {"videoRenderer": {
+                  "videoId": "fi@T@tab00002",
+                  "title": {"simpleText": "Tab row two"},
+                  "lengthText": {"simpleText": "3:30"},
+                  "publishedTimeText": {"simpleText": "5 days ago"}
+                }}}},
+                {"continuationItemRenderer": {"continuationEndpoint": {"continuationCommand": {"token": "FI-TAB-@T@-2"}}}}
+              ]
+            }
+          }
+        }}
+      ]
+    }
+  }
+}

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" role="img" aria-label="shorts">
+<defs><linearGradient id="t" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8a5c"/><stop offset="1" stop-color="#e0364d"/></linearGradient></defs>
+<path d="M48.00 0.30H48.00A47.70 47.70 0 0 1 95.70 48.00V92.36A3.34 3.34 0 0 1 92.36 95.70H48.00A47.70 47.70 0 0 1 0.30 48.00V48.00A47.70 47.70 0 0 1 48.00 0.30Z" fill="url(#t)"/>
+<path d="M48.00 23.52H48.00A15.64 15.64 0 0 1 63.64 39.16V56.84A15.64 15.64 0 0 1 48.00 72.48H48.00A15.64 15.64 0 0 1 32.36 56.84V39.16A15.64 15.64 0 0 1 48.00 23.52Z" fill="none"/><rect x="33.04" y="23.52" width="29.92" height="48.96" rx="6.12" fill="none" stroke="#fff6ee" stroke-width="5.78" stroke-linecap="round" stroke-linejoin="round"/><path d="M43.92 39.84L54.80 48.00L43.92 56.16Z" fill="#fff6ee"/>
+</svg>

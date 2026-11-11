@@ -1,0 +1,61 @@
+{
+  "responseContext": {"note": "synthetic fault-injection fixture: five threads, two of them broken"},
+  "onResponseReceivedEndpoints": [
+    {"reloadContinuationItemsCommand": {
+      "targetId": "comments-section",
+      "continuationItems": [
+        {"commentsHeaderRenderer": {"countText": {"runs": [{"text": "5"}, {"text": " Comments"}]}}},
+        {"commentThreadRenderer": {
+          "commentViewModel": {"commentViewModel": {"commentKey": "FI-KEY-A", "commentId": "UgxFaultThreadA"}},
+          "replies": {"commentRepliesRenderer": {
+            "contents": [{"continuationItemRenderer": {"continuationEndpoint": {"continuationCommand": {"token": "FI-REPLIES-A"}}}}],
+            "viewReplies": {"buttonRenderer": {"text": {"runs": [{"text": "2 replies"}]}}}
+          }}
+        }},
+        {"commentThreadRenderer": {
+          "commentViewModel": {"commentViewModel": {"commentKey": "FI-KEY-B-HAS-NO-ENTITY", "commentId": "UgxFaultThreadB"}}
+        }},
+        {"commentThreadRenderer": {
+          "commentViewModel": {"commentViewModel": {"commentKey": "FI-KEY-C", "commentId": "UgxFaultThreadC"}},
+          "replies": {"commentRepliesRenderer": {
+            "contents": [{"continuationItemRenderer": {"continuationEndpoint": {"continuationCommand": {"token": "FI-REPLIES-C"}}}}],
+            "viewReplies": {"buttonRenderer": {"text": {"runs": [{"text": "1 reply"}]}}}
+          }}
+        }},
+        {"commentThreadRenderer": {
+          "commentViewModel": {"commentViewModel": {"commentKey": "FI-KEY-D"}}
+        }},
+        {"futureCommentViewModel": {"commentId": "UgxFaultThreadZ"}},
+        {"commentThreadRenderer": {
+          "comment": {"commentRenderer": {
+            "commentId": "UgxFaultThreadE",
+            "authorText": {"simpleText": "@older"},
+            "contentText": {"runs": [{"text": "Older generation, inline body"}]},
+            "publishedTimeText": {"runs": [{"text": "1 year ago"}]},
+            "voteCount": {"simpleText": "7"}
+          }}
+        }},
+        {"continuationItemRenderer": {"continuationEndpoint": {"continuationCommand": {"token": "FI-THREADS-2"}}}}
+      ]
+    }}
+  ],
+  "frameworkUpdates": {"entityBatchUpdate": {"mutations": [
+    {"entityKey": "FI-KEY-C", "payload": {"commentEntityPayload": {
+      "key": "FI-KEY-C",
+      "properties": {"commentId": "UgxFaultThreadC", "content": {"content": "Thread C body"}, "publishedTime": "3 days ago"},
+      "author": {"displayName": "@faultc", "channelId": "UCfaultChannel000000000C"},
+      "toolbar": {"likeCountNotliked": "not a count", "replyCount": "1"}
+    }}},
+    {"entityKey": "FI-JUNK", "payload": "not an object"},
+    {"entityKey": "FI-KEY-D", "payload": {"commentEntityPayload": {
+      "key": "FI-KEY-D",
+      "properties": {"content": {"content": "Thread D body without any comment id"}}
+    }}},
+    {"entityKey": "FI-KEY-A", "payload": {"commentEntityPayload": {
+      "key": "FI-KEY-A",
+      "properties": {"commentId": "UgxFaultThreadA", "content": {"content": "Thread A body"}, "publishedTime": "2 days ago"},
+      "author": {"displayName": "@faulta", "channelId": "UCfaultChannel000000000A"},
+      "toolbar": {"likeCountNotliked": "3", "replyCount": "2"}
+    }}}
+  ]}}
+}

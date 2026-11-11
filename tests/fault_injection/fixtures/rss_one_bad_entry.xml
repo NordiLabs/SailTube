@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- synthetic: two healthy entries around one with an implausible video id and one without any -->
+<feed xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
+ <yt:channelId>@CH@</yt:channelId>
+ <title>Fault channel @T@</title>
+ <entry>
+  <yt:videoId>fi@T@rss00001</yt:videoId>
+  <title>Healthy entry one</title>
+  <published>2026-11-07T10:00:00+00:00</published>
+ </entry>
+ <entry>
+  <yt:videoId>../../etc/x</yt:videoId>
+  <title>Bad entry: implausible id</title>
+  <published>2026-11-07T09:00:00+00:00</published>
+ </entry>
+ <entry>
+  <title>Bad entry: no id at all</title>
+  <published>not a date</published>
+ </entry>
+ <entry>
+  <yt:videoId>fi@T@rss00002</yt:videoId>
+  <title>Healthy entry two</title>
+  <published>2026-11-06T10:00:00+00:00</published>
+ </entry>
+</feed>

@@ -1,0 +1,862 @@
+{
+  "upstream": "SailTune (PolyForm-Noncommercial-1.0.0, same owner)",
+  "upstream_commit": "5a98381",
+  "policy": "Do not edit these files in SailTube. Change them in SailTune (or the future shared library) and re-pin with tools/shared_sync.py. See docs/SHARING.md.",
+  "files": [
+    {
+      "path": "Shared/Runtime/Python/resolver.py",
+      "upstream_path": "Runtime/Python/resolver.py",
+      "mode": "verbatim",
+      "note": "",
+      "upstream_sha256": "89cdec18b010951b0e7d0a5efedfde69ebc39b881ac65438578111841ebf7797",
+      "local_sha256": "89cdec18b010951b0e7d0a5efedfde69ebc39b881ac65438578111841ebf7797"
+    },
+    {
+      "path": "Shared/Runtime/Python/Resolver.qml",
+      "upstream_path": "Runtime/Python/Resolver.qml",
+      "mode": "verbatim",
+      "note": "",
+      "upstream_sha256": "c71b79e36dfd66ad7a21fcc1f2e1e9c540343ad5b593a8e986e88241608fa151",
+      "local_sha256": "c71b79e36dfd66ad7a21fcc1f2e1e9c540343ad5b593a8e986e88241608fa151"
+    },
+    {
+      "path": "Shared/Runtime/QuickJs/CMakeLists.txt",
+      "upstream_path": "Runtime/QuickJs/CMakeLists.txt",
+      "mode": "verbatim",
+      "note": "Build recipe of libsailtune-quickjs.so.1; the artifact is staged, not built here.",
+      "upstream_sha256": "bfffe972288b78293a44394725669d1efec797f7facbc98d5a5411e69169654c",
+      "local_sha256": "bfffe972288b78293a44394725669d1efec797f7facbc98d5a5411e69169654c"
+    },
+    {
+      "path": "Shared/Runtime/Child/PythonResolverChild.h",
+      "upstream_path": "Clients/Sailfish/Infrastructure/PythonResolverChild.h",
+      "mode": "verbatim",
+      "note": "",
+      "upstream_sha256": "8183ca88e9ca7f20f7ddca96b63c1abf54c42986147d0dad73819c3646c87acc",
+      "local_sha256": "62c29b3ccfd33f74e35230889a8902adf703232cc58c90110f1857191c5c9d53"
+    },
+    {
+      "path": "Shared/Runtime/Child/QuickJsChild.h",
+      "upstream_path": "Clients/Sailfish/Infrastructure/QuickJsChild.h",
+      "mode": "verbatim",
+      "note": "",
+      "upstream_sha256": "8610ead3137c89581fbda52baf0e49f569c16931a26e41ef9ea1f9f787c5f8ce",
+      "local_sha256": "7a037470ee12d928e216f0eb7d82e1673b18a04e834dde7fd3c8c825100c3265"
+    },
+    {
+      "path": "Shared/Runtime/Child/PythonResolverChild.cpp",
+      "upstream_path": "Clients/Sailfish/Infrastructure/PythonResolverChild.cpp",
+      "mode": "patched",
+      "note": "Runtime directory comes from NORDTILE_RUNTIME_ROOT (NordTileRuntimeLayout.h, supplied by the application).",
+      "upstream_sha256": "ec90a84cb923fc4ec0e000bfe22c74be1787e34ba4047664de98ada02c791260",
+      "local_sha256": "0afe536d76bd269c5e478de8c07ffb48a210a5d2a5ad8da326156adacfaa74fc"
+    },
+    {
+      "path": "Shared/Runtime/Child/QuickJsChild.cpp",
+      "upstream_path": "Clients/Sailfish/Infrastructure/QuickJsChild.cpp",
+      "mode": "patched",
+      "note": "QuickJS library path comes from NORDTILE_RUNTIME_ROOT (NordTileRuntimeLayout.h, supplied by the application).",
+      "upstream_sha256": "c976b5eb809ea02bed39b726b16d1c6983122f631e358702ab0d5175a34b3578",
+      "local_sha256": "b07dd4718dbcf47aa5e1690a8ebebd195e02319c810ccb3d6ba7a042b544a7f4"
+    },
+    {
+      "path": "Shared/Runtime/Process/ResolverProcess.h",
+      "upstream_path": "Core/Streaming/Infrastructure/YtDlpStreamResolver.cpp",
+      "mode": "extracted",
+      "note": "Class ResolverProcess moved out of the anonymous namespace into nordtile::runtime; body unchanged. Class re-checked identical at 5a98381.",
+      "upstream_sha256": "13b14628b1857a27b49e707d534940976f1290cfb011c083e2e02de0ee81a6fa",
+      "local_sha256": "c73b2305493bedb2511578bec4093c14a29c05916140143e3287cc979baeeb10"
+    },
+    {
+      "path": "Shared/Playback/StreamSource.h",
+      "upstream_path": "",
+      "mode": "local",
+      "note": "Player-facing resolver/fetcher interface (SHARED_PLAYBACK.md point 2). Authored in SailTube for both apps; SailTune's producer implements it. Playback batch 2 added fields additively (docs/SHARED_REQUESTS.md R-CORE-8).",
+      "upstream_sha256": "",
+      "local_sha256": "174d8b7f414ab205e1c965208acf7331e7da4bd551201abb4be57ebbc8bb7a57"
+    },
+    {
+      "path": "Shared/SailTune/Core/SharedPlayback/Domain/CircuitBreaker.h",
+      "upstream_path": "Core/SharedPlayback/Domain/CircuitBreaker.h",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "bf70df53353d74ab65d71dea63a71ce8f4576c62172da230081fcaf17ce0e2b8",
+      "local_sha256": "0a319bcd88170165696e1bf4d1557db879784a5f5df394d91f844492a74eacb8"
+    },
+    {
+      "path": "Shared/SailTune/Core/SharedPlayback/Domain/FormatLadder.h",
+      "upstream_path": "Core/SharedPlayback/Domain/FormatLadder.h",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "c623d50422210b1825e93ff4c7acd6d77e1ec88b120a26eed2061e0b5a26aa7a",
+      "local_sha256": "d08095d1405d7ae431a23241e5f4005bd1ccf43e7d0824ea78ea97875ee39356"
+    },
+    {
+      "path": "Shared/SailTune/Core/SharedPlayback/Domain/HttpResponseParser.h",
+      "upstream_path": "Core/SharedPlayback/Domain/HttpResponseParser.h",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "3905be12ff3e4f187cc88591aab867cf2d602b8690de7c329ef8706d8df4e751",
+      "local_sha256": "777c1578f383a17e3f532a859cd9d489e6d15227d78e069880df421143177ee4"
+    },
+    {
+      "path": "Shared/SailTune/Core/SharedPlayback/Domain/InnerTubeClient.h",
+      "upstream_path": "Core/SharedPlayback/Domain/InnerTubeClient.h",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "6f659b8c27a58a5a1a4bcfff2ed8ed9e0a8dcbe8b509bb99c3cf41a87f134a5f",
+      "local_sha256": "707c7c16baad417f2c7aee5dfffc64dca4b2c3fa8ba680ff9b8cfc6fa47870bf"
+    },
+    {
+      "path": "Shared/SailTune/Core/SharedPlayback/Domain/Playability.h",
+      "upstream_path": "Core/SharedPlayback/Domain/Playability.h",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "858783cb299e7ddf4c2d51bffaa99b28c75c790c60ec16b3ada22024946d3ad7",
+      "local_sha256": "4490141014a987c3ee6b676a803839b1bc82ed0d2f4e379a2bfc4a95a34154ea"
+    },
+    {
+      "path": "Shared/SailTune/Core/SharedPlayback/Domain/ResolveCache.h",
+      "upstream_path": "Core/SharedPlayback/Domain/ResolveCache.h",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "e2b5721d65a58a78196d2bee255bb8ec4ec62b657d15c8f12b330c445f76e4fc",
+      "local_sha256": "3902fa2d856253a036f13e28d1c9da01c1f705a919cadfebf0f851023ddaac30"
+    },
+    {
+      "path": "Shared/SailTune/Core/SharedPlayback/Domain/StreamTypes.h",
+      "upstream_path": "Core/SharedPlayback/Domain/StreamTypes.h",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "ff6c7f34bc1d89410af91e8feeb9d6ee2d7e3cd41db5ec7bfc809ba03da2325a",
+      "local_sha256": "9c00afd9c6b72f871465376f9685eb2b2fafaf1d66ab286c16e202820deceb38"
+    },
+    {
+      "path": "Shared/SailTune/Core/SharedPlayback/Infrastructure/FastStreamResolver.cpp",
+      "upstream_path": "Core/SharedPlayback/Infrastructure/FastStreamResolver.cpp",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "02c9af98bedfa645d26bc929c728a0c933e04c43fd56bbf68a882ef89fb9d801",
+      "local_sha256": "4737754f2821622effcca42fcf642ba58f91dbb43e820fe2521e7e2cf021b092"
+    },
+    {
+      "path": "Shared/SailTune/Core/SharedPlayback/Infrastructure/FastStreamResolver.h",
+      "upstream_path": "Core/SharedPlayback/Infrastructure/FastStreamResolver.h",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "333d8ce4767efc0307f509410530268d39b11454d5904b1e171f679bb56b218c",
+      "local_sha256": "3db9306d217d76fa2fdf163638b317bce53cc230278b30e0377e924b2f86b79a"
+    },
+    {
+      "path": "Shared/SailTune/Core/SharedPlayback/Infrastructure/HttpsConnection.cpp",
+      "upstream_path": "Core/SharedPlayback/Infrastructure/HttpsConnection.cpp",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "8973e0223365872fd755fece3da4acbd9f6e37936dbfaf6e35263846b097a0db",
+      "local_sha256": "3e12e0d50436b4be89d0b7317f5fc376a3b0dd0ebc3e3c69d5f10ee00da77626"
+    },
+    {
+      "path": "Shared/SailTune/Core/SharedPlayback/Infrastructure/HttpsConnection.h",
+      "upstream_path": "Core/SharedPlayback/Infrastructure/HttpsConnection.h",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "a6f031742e78ca6766a5c376511cdb99ebbb140b9a7d76d30de143a0fdb9224c",
+      "local_sha256": "2cc5950ded48e064bf1fbfd67aaab7aa04c6fc57321fd38370c89c1393e1e132"
+    },
+    {
+      "path": "Shared/SailTune/Core/SharedPlayback/Infrastructure/MediaProxy.cpp",
+      "upstream_path": "Core/SharedPlayback/Infrastructure/MediaProxy.cpp",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "39f610784bd8862482aeac7c2b03c3bd53727d87dd2e1bcde42b38ce155b4a56",
+      "local_sha256": "32a1080dc14149810a2c666510d4e9b3ef49975cff6729a15e0566787fb622bd"
+    },
+    {
+      "path": "Shared/SailTune/Core/SharedPlayback/Infrastructure/MediaProxy.h",
+      "upstream_path": "Core/SharedPlayback/Infrastructure/MediaProxy.h",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "93820885cb7588b844169b637c7eed863db852598cfcc519794870fbe42f8467",
+      "local_sha256": "3d10debf7543b0461c37df9e74f67ca9ef5ddbe0b156000d516c0d4190971ab7"
+    },
+    {
+      "path": "Shared/SailTune/Core/SharedPlayback/Infrastructure/PlayerResponseParser.cpp",
+      "upstream_path": "Core/SharedPlayback/Infrastructure/PlayerResponseParser.cpp",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "da990b9b431d3e5a1f1046b04b3f0e170bf6ed31f2bd214e0def6329b6f84b84",
+      "local_sha256": "cd23a575ac55192441229822380b2fffbf94c4153acbcb0d03fd96a7268220a9"
+    },
+    {
+      "path": "Shared/SailTune/Core/SharedPlayback/Infrastructure/PlayerResponseParser.h",
+      "upstream_path": "Core/SharedPlayback/Infrastructure/PlayerResponseParser.h",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "9232f5be32a60237c79d4757c4f7ee1d7ad2bd36c41a28055573eb5474f7562a",
+      "local_sha256": "81a2f57fb87aa5215933818803fce08b29f117f7e60d1a32cf289555ccc447df"
+    },
+    {
+      "path": "Shared/SailTune/Core/SharedPlayback/README.md",
+      "upstream_path": "Core/SharedPlayback/README.md",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "c4c0c0e9db29d0db9c515c9d4672b36d94679fb8dd97c3bfcb4c93cbb291979c",
+      "local_sha256": "c4c0c0e9db29d0db9c515c9d4672b36d94679fb8dd97c3bfcb4c93cbb291979c"
+    },
+    {
+      "path": "Shared/SailTune/tests/sharedplayback/DomainTest.cpp",
+      "upstream_path": "tests/sharedplayback/DomainTest.cpp",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "14bf687747243d72693b4aa95a75307a740f4d1339e4255349c12e926e833360",
+      "local_sha256": "4b8b0d8b0fce56585d6cf5d5e5dc49b003f4042ab2d88605f24cebf0cec9e285"
+    },
+    {
+      "path": "Shared/SailTune/tests/sharedplayback/FakeProvider.h",
+      "upstream_path": "tests/sharedplayback/FakeProvider.h",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "5949c00db1d1ca7df9024fd812aff07d91159e56363105af3358c986c8c7da9b",
+      "local_sha256": "5949c00db1d1ca7df9024fd812aff07d91159e56363105af3358c986c8c7da9b"
+    },
+    {
+      "path": "Shared/SailTune/tests/sharedplayback/FastResolverTest.cpp",
+      "upstream_path": "tests/sharedplayback/FastResolverTest.cpp",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "0bd71d8d5106bc64d72bd00581e9c34e301e2a25244e4f0d95d93392390c0e5b",
+      "local_sha256": "d99d45fae8421a448a3b5851d9a2d418d7c62929ac9f7e818fe891c4f837d4a9"
+    },
+    {
+      "path": "Shared/SailTune/tests/sharedplayback/MediaProxyTest.cpp",
+      "upstream_path": "tests/sharedplayback/MediaProxyTest.cpp",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "541d3f18c5e7e88413f0122d7f8f6c3e0a76a239d6fe5ac95d4c6084a19b2b61",
+      "local_sha256": "486eea46e8e69ead60b321f4b3d59bee74dd98420994c7ca3245ea912c03c9c4"
+    },
+    {
+      "path": "Shared/SailTune/tests/sharedplayback/fixtures/player_age.json",
+      "upstream_path": "tests/sharedplayback/fixtures/player_age.json",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "90e76efb93d6a58c50199f075533789d78137674d917c0755a0205b620a9f3a9",
+      "local_sha256": "90e76efb93d6a58c50199f075533789d78137674d917c0755a0205b620a9f3a9"
+    },
+    {
+      "path": "Shared/SailTune/tests/sharedplayback/fixtures/player_bot.json",
+      "upstream_path": "tests/sharedplayback/fixtures/player_bot.json",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "312bae41ce36e79430418fa4a6c8fbf93938ce0f9c64b87ca11830178d318afd",
+      "local_sha256": "312bae41ce36e79430418fa4a6c8fbf93938ce0f9c64b87ca11830178d318afd"
+    },
+    {
+      "path": "Shared/SailTune/tests/sharedplayback/fixtures/player_ciphered.json",
+      "upstream_path": "tests/sharedplayback/fixtures/player_ciphered.json",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "8637186f67099b8f9172dff26fc53eba92914e40150038fedaab8e11cf308550",
+      "local_sha256": "8637186f67099b8f9172dff26fc53eba92914e40150038fedaab8e11cf308550"
+    },
+    {
+      "path": "Shared/SailTune/tests/sharedplayback/fixtures/player_dub.json",
+      "upstream_path": "tests/sharedplayback/fixtures/player_dub.json",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "3f5fad4df0bac8de488a57fc850ba8f3daee8c64d38ea7077523959c159bdf33",
+      "local_sha256": "3f5fad4df0bac8de488a57fc850ba8f3daee8c64d38ea7077523959c159bdf33"
+    },
+    {
+      "path": "Shared/SailTune/tests/sharedplayback/fixtures/player_live.json",
+      "upstream_path": "tests/sharedplayback/fixtures/player_live.json",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "defbc41de7c99ed1046ff8d41bcb0b83851acfe186ecde7772067901be44785d",
+      "local_sha256": "defbc41de7c99ed1046ff8d41bcb0b83851acfe186ecde7772067901be44785d"
+    },
+    {
+      "path": "Shared/SailTune/tests/sharedplayback/fixtures/player_ok.json",
+      "upstream_path": "tests/sharedplayback/fixtures/player_ok.json",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "56cc0b20d2584246ca08e013e07f2eff4d67d3afe6e4235f3a19de5890cf4c8d",
+      "local_sha256": "56cc0b20d2584246ca08e013e07f2eff4d67d3afe6e4235f3a19de5890cf4c8d"
+    },
+    {
+      "path": "Shared/SailTune/tests/sharedplayback/fixtures/player_other_video.json",
+      "upstream_path": "tests/sharedplayback/fixtures/player_other_video.json",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "d49261583b2e71dbc630c738631c9014fb2cf8562dcbb84fe573e18a1f325a3b",
+      "local_sha256": "d49261583b2e71dbc630c738631c9014fb2cf8562dcbb84fe573e18a1f325a3b"
+    },
+    {
+      "path": "Shared/SailTune/tests/sharedplayback/fixtures/player_removed.json",
+      "upstream_path": "tests/sharedplayback/fixtures/player_removed.json",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "ea53cc43d13a4a4fcbd61c526884d16e03553b3296539402d380d0c1b98b720f",
+      "local_sha256": "ea53cc43d13a4a4fcbd61c526884d16e03553b3296539402d380d0c1b98b720f"
+    },
+    {
+      "path": "Shared/SailTune/tests/sharedplayback/fixtures/player_short_lived.json",
+      "upstream_path": "tests/sharedplayback/fixtures/player_short_lived.json",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "e1452ffc6e5fad4619fb883c3e1407943147822e17a4bb3b9861cb9b8c8a4848",
+      "local_sha256": "e1452ffc6e5fad4619fb883c3e1407943147822e17a4bb3b9861cb9b8c8a4848"
+    },
+    {
+      "path": "Shared/SailTune/tests/sharedplayback/fixtures/player_try_later.json",
+      "upstream_path": "tests/sharedplayback/fixtures/player_try_later.json",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "664f7f5573acb7fa24a02dc86e56a065c398333129b038090b4fd9c372d0153a",
+      "local_sha256": "664f7f5573acb7fa24a02dc86e56a065c398333129b038090b4fd9c372d0153a"
+    },
+    {
+      "path": "Shared/SailTune/tests/sharedplayback/make_fixtures.py",
+      "upstream_path": "tests/sharedplayback/make_fixtures.py",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "21e7cb97667c4494e0bcb3aaa038c642affe1630ea81130f50574a1e2815a8ff",
+      "local_sha256": "21e7cb97667c4494e0bcb3aaa038c642affe1630ea81130f50574a1e2815a8ff"
+    },
+    {
+      "path": "Shared/SailTune/tests/sharedplayback/run.sh",
+      "upstream_path": "tests/sharedplayback/run.sh",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "185edb3f226294c961fe17f06e17d6e95d369032f3be3d5aa6400db4f5fe612e",
+      "local_sha256": "185edb3f226294c961fe17f06e17d6e95d369032f3be3d5aa6400db4f5fe612e"
+    },
+    {
+      "path": "Shared/SailTune/tests/sharedplayback/test_cert.h",
+      "upstream_path": "tests/sharedplayback/test_cert.h",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "797b38d151fadbc137d2f4db5f089ec1ea4f6136d3a38b154cb9a2e70781bcf1",
+      "local_sha256": "797b38d151fadbc137d2f4db5f089ec1ea4f6136d3a38b154cb9a2e70781bcf1"
+    },
+    {
+      "path": "Shared/SailTune/tests/privacy/check_network_inventory.py",
+      "upstream_path": "tests/privacy/check_network_inventory.py",
+      "mode": "verbatim",
+      "note": "SailTune static network-inventory tool (NFR-SEC-01); run by tests/privacy/run.sh with the SailTube scan roots and allowlist",
+      "upstream_commit": "fd49627b7eb6b56ff2f0a166c363586c96b98379",
+      "upstream_sha256": "44d12c8d04cf9ef70bbab085b0074673014745567c3bb962a8d6f46eb9d6837c",
+      "local_sha256": "44d12c8d04cf9ef70bbab085b0074673014745567c3bb962a8d6f46eb9d6837c"
+    },
+    {
+      "path": "Shared/SailTune/tests/privacy/test_check_network_inventory.py",
+      "upstream_path": "tests/privacy/test_check_network_inventory.py",
+      "mode": "verbatim",
+      "note": "SailTune static network-inventory tool (NFR-SEC-01); run by tests/privacy/run.sh with the SailTube scan roots and allowlist",
+      "upstream_commit": "fd49627b7eb6b56ff2f0a166c363586c96b98379",
+      "upstream_sha256": "a6297c06da4c0222e2ed6ef0fd412e7b2f49c4b3468c607bc31a3f4542fa6250",
+      "local_sha256": "a6297c06da4c0222e2ed6ef0fd412e7b2f49c4b3468c607bc31a3f4542fa6250"
+    },
+    {
+      "path": "Shared/SailTune/tests/sharedplayback/ProxyClient.h",
+      "upstream_path": "tests/sharedplayback/ProxyClient.h",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "b0035cd2511b56525b5a3e1dcccae61d7b150a361a708babcc651b3af18874d2",
+      "local_sha256": "b0035cd2511b56525b5a3e1dcccae61d7b150a361a708babcc651b3af18874d2"
+    },
+    {
+      "path": "Shared/SailTune/tests/sharedplayback/fixtures/player_muxed_only.json",
+      "upstream_path": "tests/sharedplayback/fixtures/player_muxed_only.json",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "46f32b95636b4ce09266206a6d02751d57371a6c694a5bbf9de5eddcc45dda2a",
+      "local_sha256": "46f32b95636b4ce09266206a6d02751d57371a6c694a5bbf9de5eddcc45dda2a"
+    },
+    {
+      "path": "Shared/SailTune/Core/SharedPlayback/Infrastructure/MediaAddress.h",
+      "upstream_path": "Core/SharedPlayback/Infrastructure/MediaAddress.h",
+      "mode": "verbatim",
+      "note": "SailTune shared playback component; same relative layout so includes stay verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "150c189ebf1693e70db60b9347761ccef30e2a136fd13a6964929ef5a010e0a6",
+      "local_sha256": "0066725888f39eb34eb26eb0011ed521b594702f47b1e0064574875d73c9ca32"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Domain/Account.h",
+      "upstream_path": "Core/Accounts/Domain/Account.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "8ab3c4eae14843c238bd4de7dc5a99af37d0a1ca9e75932f5fe0b2d1da3bd1e7",
+      "local_sha256": "f67fb5d12758387b41ac8dd87db6e5efc6c7c354d3658d22af51b5179fab3b06"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Domain/SessionTypes.h",
+      "upstream_path": "Core/Accounts/Domain/SessionTypes.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "7d0a046f39d34b66f48ea6b9b9b4c6e6d99314357fe540d72073c892c4509b85",
+      "local_sha256": "8bffa0e6b9ae689fe716058608a66891d5489460e534e7819b0c41765020b7f4"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Infrastructure/PrivateFile.cpp",
+      "upstream_path": "Core/Accounts/Infrastructure/PrivateFile.cpp",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "8ae35ebf8830ffeabc851000e901cef6df88e99f94135ee5337fe170cff043b2",
+      "local_sha256": "4ab4ad5f9e3a44bb04e88ee8fc8e8f16e1eeb470ada5b9d55bfe9c7d39262241"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Infrastructure/PrivateFile.h",
+      "upstream_path": "Core/Accounts/Infrastructure/PrivateFile.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "3eb398071326e4a53f4c1ae4616f76d6f3812f788adae3520636e784676641c6",
+      "local_sha256": "9e59a2ca81197a9ed3305793b9a18c083e5aa6e627030f7bd09038a3d86a3493"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Infrastructure/SailfishCredentialVault.cpp",
+      "upstream_path": "Core/Accounts/Infrastructure/SailfishCredentialVault.cpp",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "7d668e6f0ad9b3383e731f1bb9049e0c3598c8ff495a22dd2343bcd5bd2ad82e",
+      "local_sha256": "21d1a9de57767e59528d0d93543cb393f5a4e5bd198e66c73b4d4c3ecc41914e"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Infrastructure/SailfishCredentialVault.h",
+      "upstream_path": "Core/Accounts/Infrastructure/SailfishCredentialVault.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "7c7ea36632a3e93af38036d98c2afc0394575ac309a7ffe227b2f80d189c330c",
+      "local_sha256": "3116041ccfa06993794bbe1d3e26a32512c959b29bff33cdadb47a7b27de4a64"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Infrastructure/SessionBundleCodec.cpp",
+      "upstream_path": "Core/Accounts/Infrastructure/SessionBundleCodec.cpp",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "14aa429c90ddd27f12a08519f81e41c8d237e16c1ddc2525f9e7be28c57cb2db",
+      "local_sha256": "7acaf958c30c154e4397a2cb290cdee45c85d3f40dc4aa3621a84fee60dc85b3"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Infrastructure/SessionBundleCodec.h",
+      "upstream_path": "Core/Accounts/Infrastructure/SessionBundleCodec.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "7334b1c1dd5e40c84c1d5e1c43459472918a72154d2cb98d937b933aed2584b6",
+      "local_sha256": "bfad59df2ae1f6dc5e58eb8c51a96a4bd88a9bc9c0cac7038e0caacab36c5e99"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Infrastructure/SessionExpiryDetector.cpp",
+      "upstream_path": "Core/Accounts/Infrastructure/SessionExpiryDetector.cpp",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "3ea2e1174acec0ae7d14ca50201e670b21607fdc39e16a9445bdc87f21d21db1",
+      "local_sha256": "6a16b0f5722eef874d665565b49fba1328372d1018f4d3228082c256962e37c4"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Infrastructure/SessionExpiryDetector.h",
+      "upstream_path": "Core/Accounts/Infrastructure/SessionExpiryDetector.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "4776b61d41a6ad0b9192a64b67d5dcf219ad0101ddf1b163e22ac9187030c439",
+      "local_sha256": "f9b06c912b489a9bac35e97526be8ba4257ddff36c944556373c3c2f01e7f40c"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Infrastructure/SessionHolder.cpp",
+      "upstream_path": "Core/Accounts/Infrastructure/SessionHolder.cpp",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "556e33b29eb70a515015d562e166a4e17423109092c26044e19ebd543a5297fe",
+      "local_sha256": "4d5c53c026d346d2615e5f1d7ccdbf93442a3efa7357a8d54c6e2f4f32c24125"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Infrastructure/SessionHolder.h",
+      "upstream_path": "Core/Accounts/Infrastructure/SessionHolder.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "6ed20f404261b57e55d0708efa8c4425a942e73d94b0815d94acdfc3e4d3fd0c",
+      "local_sha256": "d05feb9996fcecf3837560a6d541192c23291bf97558e69ba9dc0f938cb83258"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Infrastructure/SessionImportParser.cpp",
+      "upstream_path": "Core/Accounts/Infrastructure/SessionImportParser.cpp",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "867787e0ecc5df677eae44ab6a142d964d0863e5f67eb07e150e6df6d730c1ea",
+      "local_sha256": "11facbef50505768a67309304cbff4c193cb1237afd07aef0ed7038ce01c77de"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Infrastructure/SessionImportParser.h",
+      "upstream_path": "Core/Accounts/Infrastructure/SessionImportParser.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "66a91c8ba3bcc43445468ccc85234634dd2a73148c4f9a60e2683b5044c3e20f",
+      "local_sha256": "43ee35c3ae3744f5fd1ec32e2b40f94bc33b3b6373b883c7b5d0c8988b7ed15a"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Infrastructure/SessionSigner.cpp",
+      "upstream_path": "Core/Accounts/Infrastructure/SessionSigner.cpp",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "521b01a112c067547831565264f1ea621b203f1f420106eb9160ee2c824937a8",
+      "local_sha256": "9cf7bb99c9db52332bd8c64c7f7d402879dc1fe38ae81d703c0c1a2eff9b8992"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Infrastructure/SessionSigner.h",
+      "upstream_path": "Core/Accounts/Infrastructure/SessionSigner.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "114b578c72451b37a4cff7bc95a35a6b6c96c8bd8bac9d215e528a9c827ec0a0",
+      "local_sha256": "765ec55627dfaf71a6fb5551085255a41fddcbc08fdf76d9cc095946e18ef32d"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Infrastructure/Sha1.cpp",
+      "upstream_path": "Core/Accounts/Infrastructure/Sha1.cpp",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "321d45dda5261af018ed5bc1eb6b49204511103b4267711f7340c1e856a2ecee",
+      "local_sha256": "086f1054dc06d955278e9b8d7dbb8fc6f31780c7f7b55af0c34b48501975fd6d"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Infrastructure/Sha1.h",
+      "upstream_path": "Core/Accounts/Infrastructure/Sha1.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "3cd0d9962136eaa0933adaee44788e671dc015e50dc1311bbb5566d069fbd17c",
+      "local_sha256": "f21dfa624bfe88d345c7b495b204d0c0637884e491fa8381304fd54b90b6b14f"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Ports/AuthorizationPort.h",
+      "upstream_path": "Core/Accounts/Ports/AuthorizationPort.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "1d137a7c728624b0f35a083fa61887ea9bfb51e2d38802f6c3c7acf57f962791",
+      "local_sha256": "4938739d5d702e1c9a8a69c9ee3cf7acbb2649335a0e21556984d6e6e46062b0"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Ports/CredentialVaultPort.h",
+      "upstream_path": "Core/Accounts/Ports/CredentialVaultPort.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "507dd923633e001db8b33e66422ea550d01ff2eac46d40a53d584d245d3119bc",
+      "local_sha256": "029722fc324f185207f17ae89c629b9a26ae19c4e98adefd2f741877314533a6"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Ports/IdentityProbePort.h",
+      "upstream_path": "Core/Accounts/Ports/IdentityProbePort.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "0be645e258bd80dba93b186572bcf69770958d3648eaa225b05ce17e2768ee76",
+      "local_sha256": "fbeeb5f92454b0069fe3b876f4f4b1203f0e4db4c84ec9f50cea34d3ca58a2b4"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Ports/SessionCredentialsPort.h",
+      "upstream_path": "Core/Accounts/Ports/SessionCredentialsPort.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "1abe18f9ab12748fe84818c59dba29ff704c16808de3992e5288e8ddfea57213",
+      "local_sha256": "93cc9908bf84afc7fe842787c082ec99cdebfa7dcc6120b1898ff7526ca130b1"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Ports/SessionMaterialSinkPort.h",
+      "upstream_path": "Core/Accounts/Ports/SessionMaterialSinkPort.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "5e6baa96723674473a17eb379d921aac4f874c02da0df0326bda0d9abe3b7c5c",
+      "local_sha256": "c3da9ab9619393f445df19b62b73733552e3c713d6470825d84a04bb528d66b2"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Ports/SessionSource.h",
+      "upstream_path": "Core/Accounts/Ports/SessionSource.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "c0b65b3c35367fb171b76c4e95a47b22a8455fa354fad28124c4c69a77eb8dda",
+      "local_sha256": "a61cc836faf027df8cecd8bf0cbb9e4eb107dd80e4fe03fbaee0bd636582a87e"
+    },
+    {
+      "path": "Shared/SailTune/Core/Accounts/Ports/WorkerPort.h",
+      "upstream_path": "Core/Accounts/Ports/WorkerPort.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "a2cd38bfa8eda4ef7c13a3ab1b88eaa5edb38b75407cb57e8c42a29059b18845",
+      "local_sha256": "b166342faab31ff9ff183fd3464b2749361e634479e0864c086d5123829845a4"
+    },
+    {
+      "path": "Shared/SailTune/Core/Ytm/Sources/Application/BrowserCookieJarSource.cpp",
+      "upstream_path": "Core/Ytm/Sources/Application/BrowserCookieJarSource.cpp",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "01cc2594a87261c7925ef2809326abd76b3cdeada64abd56252acf5c55991ce0",
+      "local_sha256": "d7da2c716bc0dd39ff9aebc2e57b45580514f09c9a8668d3e53e0a576ddb06d3"
+    },
+    {
+      "path": "Shared/SailTune/Core/Ytm/Sources/Application/BrowserCookieJarSource.h",
+      "upstream_path": "Core/Ytm/Sources/Application/BrowserCookieJarSource.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "4877abf556a4945ac99d743b63d163de9da36ddf4af8a0cbb1acbaee6d2c1d81",
+      "local_sha256": "8269d7fca82e96acb080c3dce9ad19d9e16dd88af29c02426e10e75205687d11"
+    },
+    {
+      "path": "Shared/SailTune/Core/Ytm/Sources/Domain/AccountEnumeration.cpp",
+      "upstream_path": "Core/Ytm/Sources/Domain/AccountEnumeration.cpp",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "8c30ab2fe6c2226a41468acd1c04754229a7cd81e708e47544513ceb653e530d",
+      "local_sha256": "5aec060a14883dd142303fe099d2c28db76d3b28bf7181f2e5ca54823ff626ee"
+    },
+    {
+      "path": "Shared/SailTune/Core/Ytm/Sources/Domain/AccountEnumeration.h",
+      "upstream_path": "Core/Ytm/Sources/Domain/AccountEnumeration.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "e11081461aaf0a73bcab8c97d37526554d5f7cd6954bbde12a436eff342dcee1",
+      "local_sha256": "eb97bc4b5082a5910daeb6b47155cf14a891e4f74a9774a1a975a6f3d2b0ffdd"
+    },
+    {
+      "path": "Shared/SailTune/Core/Ytm/Sources/Domain/BrowserImportTypes.h",
+      "upstream_path": "Core/Ytm/Sources/Domain/BrowserImportTypes.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "bfd13fa720624b1b2a0be8f1e46878781956118b40b8609ecedc72a4cd7f4f38",
+      "local_sha256": "09c315528ebef2ad63d3d1b7c111fab86ef3dfc9aed4c2e28377a7fce4c9adb9"
+    },
+    {
+      "path": "Shared/SailTune/Core/Ytm/Sources/Domain/CookieJarSelection.cpp",
+      "upstream_path": "Core/Ytm/Sources/Domain/CookieJarSelection.cpp",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "d9986dedfb715a42d454b117d355f76081ad9f225f27ed34fd963355ad5b4283",
+      "local_sha256": "c99ebca6bba8b903fb9d940e36c9b441895eaa7edd9ec124f3cdf4699db65918"
+    },
+    {
+      "path": "Shared/SailTune/Core/Ytm/Sources/Domain/CookieJarSelection.h",
+      "upstream_path": "Core/Ytm/Sources/Domain/CookieJarSelection.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "c1f63364600a86313d349668c2eccb633c49e3b181b8365eacb5509a544f03e2",
+      "local_sha256": "e5cdac2138e36cac7713233ea7503a781733ac44bc8eb9430be1e1d68e33e325"
+    },
+    {
+      "path": "Shared/SailTune/Core/Ytm/Sources/Infrastructure/GeckoCookieJarReader.cpp",
+      "upstream_path": "Core/Ytm/Sources/Infrastructure/GeckoCookieJarReader.cpp",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "91ca84b36c907e8c53ee764c7752515bafac61458ee8e249f1ca9737c4fa2081",
+      "local_sha256": "e8e1dedd9e90a513ff700b0a7dfd8236e9c6833037967595134b07ffdf1ee7c9"
+    },
+    {
+      "path": "Shared/SailTune/Core/Ytm/Sources/Infrastructure/GeckoCookieJarReader.h",
+      "upstream_path": "Core/Ytm/Sources/Infrastructure/GeckoCookieJarReader.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "c045d569c9c7f02da9c55b094a3dbaf128812ab1a736fccd84413e5a88c32455",
+      "local_sha256": "8b15b3815b14eae27c7d3315c6568fc904a5c0a351aedcd4dcdcbfcd44e46a5c"
+    },
+    {
+      "path": "Shared/SailTune/Core/Ytm/Sources/Infrastructure/PrivateScratch.cpp",
+      "upstream_path": "Core/Ytm/Sources/Infrastructure/PrivateScratch.cpp",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "29e4b54858c53fe62d15a7a5c52738cc0d84a669dd3a21efff46fc8f6ef3f594",
+      "local_sha256": "726028b3cf2ceb0f75060e31f9cb23aabea1da7fb3a632414733e97d5e8f508e"
+    },
+    {
+      "path": "Shared/SailTune/Core/Ytm/Sources/Infrastructure/PrivateScratch.h",
+      "upstream_path": "Core/Ytm/Sources/Infrastructure/PrivateScratch.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "9ae19f4c6f0e90d5d1487c98fbba4dcd47139a4555130ead423dc32c708a2f0f",
+      "local_sha256": "f9add4b56484c787b488d853f4a051abcce7ec5954adc39a83bd2ab09f62ffe6"
+    },
+    {
+      "path": "Shared/SailTune/Core/Ytm/Sources/Ports/CookieJarReaderPort.h",
+      "upstream_path": "Core/Ytm/Sources/Ports/CookieJarReaderPort.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "d28d61a4310e5b7b352b42f11d97f87b9fb36c3087f8a25bacfeb73d962146ab",
+      "local_sha256": "26b18e639371f748eea861c7724c3650b8f3266cbb7ea6f14058fbb483b55c97"
+    },
+    {
+      "path": "Shared/SailTune/Core/Ytm/Sources/Ports/LoginProbePort.h",
+      "upstream_path": "Core/Ytm/Sources/Ports/LoginProbePort.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "bbfadaa113e465f9e925d2fed5992e54518a35baed4785307f87c58b8de114e7",
+      "local_sha256": "90fff69ba8cc6866413f977b7bd7784fc08d40073f6b2f57ca1a02583ebfe6d4"
+    },
+    {
+      "path": "Shared/SailTune/Core/Ytm/Transport/Domain/SetCookie.cpp",
+      "upstream_path": "Core/Ytm/Transport/Domain/SetCookie.cpp",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "52bce86e571411412028e8e4f351603368c4048c07c691206be9707105a43b0e",
+      "local_sha256": "a8b9b701271e4b745875f23f6fdbc9a19487be1c6063dcc344eca9d3000f2d82"
+    },
+    {
+      "path": "Shared/SailTune/Core/Ytm/Transport/Domain/SetCookie.h",
+      "upstream_path": "Core/Ytm/Transport/Domain/SetCookie.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "36d39dfb67e8ade1b2134a00aa45043778a01b34f180abe04ed5e3cd0e5e5f55",
+      "local_sha256": "2874f304feb5123e7576a05ed6a436b4bdb89ab42ab3ad0605c23c96d6e01145"
+    },
+    {
+      "path": "Shared/SailTune/tests/ytm_session/Fakes.h",
+      "upstream_path": "tests/ytm_session/Fakes.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "682591f07f1bc520823905300767d340ab31d980819c1e408bcd92975592f088",
+      "local_sha256": "5a8e02f8896775ad6c2921982b0a5c376a5cd8b2292f704b6324373e0b3748ac"
+    },
+    {
+      "path": "Shared/SailTune/tests/ytm_session/check.h",
+      "upstream_path": "tests/ytm_session/check.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "65d6a5c4acb7d50b5a401ce7e426c771950fb069061d5832929760686396bb4a",
+      "local_sha256": "65d6a5c4acb7d50b5a401ce7e426c771950fb069061d5832929760686396bb4a"
+    },
+    {
+      "path": "Shared/SailTune/tests/ytm_session/gen_golden_vectors.py",
+      "upstream_path": "tests/ytm_session/gen_golden_vectors.py",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "1bf47fa236b4ddba07ccf018a7b9e2573a807a7251f23d2a6f9486adf89f2c80",
+      "local_sha256": "1bf47fa236b4ddba07ccf018a7b9e2573a807a7251f23d2a6f9486adf89f2c80"
+    },
+    {
+      "path": "Shared/SailTune/tests/ytm_session/golden_vectors.h",
+      "upstream_path": "tests/ytm_session/golden_vectors.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "c2ab9d7bf8479b1e62a8414cbd70f5c5134cdce942f2ae23ee679edca1cb3ba1",
+      "local_sha256": "c2ab9d7bf8479b1e62a8414cbd70f5c5134cdce942f2ae23ee679edca1cb3ba1"
+    },
+    {
+      "path": "Shared/SailTune/tests/ytm_session/test_pure.cpp",
+      "upstream_path": "tests/ytm_session/test_pure.cpp",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "eaeaf683a6a12955d6f56945501b26224d0456c1e4e9793c37c70ad87c3cd03a",
+      "local_sha256": "75ebccfc872ede20326995303d35c8be456dd52a9d1969440a824f5dbdc4e665"
+    },
+    {
+      "path": "Shared/SailTune/tests/ytm_sources/Fakes.h",
+      "upstream_path": "tests/ytm_sources/Fakes.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "20e3cc2af3a90e184d3c38eb802727d376ead2b4dac4b6a3ffba89335cfbab4d",
+      "local_sha256": "833b8677c375a743d4f67730169407e56dedf3e51b25f16d661967754357b7f8"
+    },
+    {
+      "path": "Shared/SailTune/tests/ytm_sources/check.h",
+      "upstream_path": "tests/ytm_sources/check.h",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "74c008723039029181f563deeac763b97e82f7c035532ac7dc2f9fdf569c2a64",
+      "local_sha256": "74c008723039029181f563deeac763b97e82f7c035532ac7dc2f9fdf569c2a64"
+    },
+    {
+      "path": "Shared/SailTune/tests/ytm_sources/test_pure.cpp",
+      "upstream_path": "tests/ytm_sources/test_pure.cpp",
+      "mode": "verbatim",
+      "note": "SailTune account/session component (ACC-03/04/06/08/10) for the library component; same relative layout so includes stay verbatim",
+      "upstream_commit": "f8755011399947c1815607cb2530947bdd2cf9f7",
+      "upstream_sha256": "f9af70b7b28cf2e1cf60151ed90d5b28833fee219f2d0ce12eec7f0a6f6a4776",
+      "local_sha256": "f9af70b7b28cf2e1cf60151ed90d5b28833fee219f2d0ce12eec7f0a6f6a4776"
+    },
+    {
+      "path": "Shared/SailTune/Core/Beta/ServerDate.h",
+      "upstream_path": "Core/Beta/ServerDate.h",
+      "mode": "verbatim",
+      "note": "Included by the pinned Core/SharedPlayback/Infrastructure/HttpsConnection.cpp since 5611210 (an empty inline function unless SAILTUNE_BETA is defined, which SailTube never does); same relative layout so the include stays verbatim",
+      "upstream_commit": "5611210e785a017d8cb3e474cb4a59d1305b229e",
+      "upstream_sha256": "da1d55b956f410b11313fedb33433fdee6204bcf2f41c39d2cb7f72de0194ceb",
+      "local_sha256": "10c3bf7381d1fd4653cc6fc3c9aae170ad36361631db9af06bed3863f8791f32"
+    }
+  ]
+}

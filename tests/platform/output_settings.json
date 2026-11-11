@@ -1,0 +1,276 @@
+{
+  "note": "NFR-TST-03 invariant 1: the resolve cache key covers every output-affecting setting. Every key of the settings inventory (Core/Settings/Domain/SettingsDefaults.cpp, or the AppSettings accessors while that table is not on the tree) is classified here: output with the Shared/Playback StreamRequest field it sets, or not output with a reason. Every StreamRequest field is classified too, and every cache key implementation listed under cache_keys must cover each output field, or declare it applied by the host after the shared answer. Checked by tools/platform_check.py cache_key; rationale in docs/PLATFORM_CHECKS.md.",
+  "request": {
+    "file": "Shared/Playback/StreamSource.h",
+    "struct": "StreamRequest",
+    "fields": {
+      "videoId": {
+        "role": "identity",
+        "reason": "the key prefix"
+      },
+      "purpose": {
+        "role": "output"
+      },
+      "maxHeight": {
+        "role": "output"
+      },
+      "highFrameRate": {
+        "role": "output"
+      },
+      "videoCodecs": {
+        "role": "output"
+      },
+      "audioCodecs": {
+        "role": "output"
+      },
+      "dubLanguage": {
+        "role": "output"
+      },
+      "hardwareDecode": {
+        "role": "output"
+      },
+      "speculative": {
+        "role": "not_output",
+        "reason": "prefetch hint: the work may be dropped, the answer is the same"
+      },
+      "signedIn": {
+        "role": "not_output",
+        "reason": "RES-20: the primary resolve never uses the account; the session always sends false, so the answer is the same"
+      },
+      "poProvider": {
+        "role": "output"
+      },
+      "network": {
+        "role": "not_output",
+        "reason": "label of the network class the ceiling was chosen for; the ceiling itself is maxHeight"
+      },
+      "clientOverride": {
+        "role": "output"
+      }
+    }
+  },
+  "cache_keys": [
+    {
+      "name": "sailtune",
+      "file": "Shared/SailTune/Core/SharedPlayback/Domain/StreamTypes.h",
+      "struct": "StreamRequest",
+      "function": "cacheKey",
+      "fields": {
+        "videoId": "videoId",
+        "purpose": "audioOnly",
+        "maxHeight": "maxVideoHeight",
+        "audioCodecs": "codecPreference",
+        "dubLanguage": "dubLanguage",
+        "hardwareDecode": "hardwareDecode"
+      },
+      "host_applied": {
+        "highFrameRate": "the pinned component has no frame-rate field and ranks every rung (higher fps first within a height); the SailTube host must drop or demote >30 fps rungs after the shared answer, so one cached answer serves both values",
+        "videoCodecs": "the pinned component only knows hardwareDecode (H.264 first); the SailTube host must order video codecs (Automatic/H.264/VP9) after the shared answer",
+        "poProvider": "the pinned component's client needs no PO token; the provider only affects the yt-dlp fallback, which the host keys in StreamSource.h cacheKey() (playback to confirm)",
+        "clientOverride": "diagnostics-only client choice for the yt-dlp fallback; the shared component uses its pinned client (playback to confirm)"
+      },
+      "component_fields_outside_key": {}
+    }
+  ],
+  "settings": {
+    "playback/maxHeight": {
+      "output": true,
+      "request_field": "maxHeight"
+    },
+    "playback/maxHeightMobile": {
+      "output": true,
+      "request_field": "maxHeight",
+      "reason": "the ceiling of the current network class is what the request carries"
+    },
+    "playback/highFrameRate": {
+      "output": true,
+      "request_field": "highFrameRate"
+    },
+    "playback/codecPreference": {
+      "output": true,
+      "request_field": "videoCodecs"
+    },
+    "playback/hardwareDecode": {
+      "output": true,
+      "request_field": "hardwareDecode"
+    },
+    "playback/adaptivePipeline": {
+      "output": false,
+      "reason": "player side: Off makes the player use the muxed list of the same StreamSet; the contract has no field for it, and it applies at start-up only"
+    },
+    "providers/poProvider": {
+      "output": true,
+      "request_field": "poProvider",
+      "reason": "RES-08/RES-14: a PO-token provider changes which formats the extractor returns"
+    },
+    "providers/clientOverride": {
+      "output": true,
+      "request_field": "clientOverride",
+      "reason": "RES-10: the provider client changes the answer"
+    },
+    "providers/extractorChannel": {
+      "output": false,
+      "reason": "chooses which extractor build runs; the formats a video offers do not depend on it, so a cached answer stays valid"
+    },
+    "content/landingPage": {
+      "output": false,
+      "reason": "navigation only"
+    },
+    "content/hideShorts": {
+      "output": false,
+      "reason": "list filter, no resolve"
+    },
+    "content/hideWatched": {
+      "output": false,
+      "reason": "list filter, no resolve"
+    },
+    "history/cap": {
+      "output": false,
+      "reason": "library storage"
+    },
+    "history/paused": {
+      "output": false,
+      "reason": "library storage"
+    },
+    "playback/resume": {
+      "output": false,
+      "reason": "start position, applied by the player"
+    },
+    "playback/keepDisplayOn": {
+      "output": false,
+      "reason": "display policy"
+    },
+    "playback/background": {
+      "output": false,
+      "reason": "lifecycle policy"
+    },
+    "playback/verticalFullscreen": {
+      "output": false,
+      "reason": "layout"
+    },
+    "playback/edgeGlow": {
+      "output": false,
+      "reason": "layout"
+    },
+    "playback/autoplayRelated": {
+      "output": false,
+      "reason": "queue policy"
+    },
+    "playback/doubleTapSeconds": {
+      "output": false,
+      "reason": "gesture"
+    },
+    "playback/keepSessionOnLeave": {
+      "output": false,
+      "reason": "lifecycle policy"
+    },
+    "playback/resumeAfterInterruption": {
+      "output": false,
+      "reason": "audio focus policy"
+    },
+    "playback/speed": {
+      "output": false,
+      "reason": "playback rate, applied by the player"
+    },
+    "comments/autoLoad": {
+      "output": false,
+      "reason": "comments, no resolve"
+    },
+    "audio/equalizer": {
+      "output": false,
+      "reason": "post-decode audio processing"
+    },
+    "audio/boost": {
+      "output": false,
+      "reason": "post-decode gain"
+    },
+    "audio/loudness": {
+      "output": false,
+      "reason": "uses StreamSet.loudnessDb, which every answer carries"
+    },
+    "captions/style": {
+      "output": false,
+      "reason": "caption rendering"
+    },
+    "sponsorblock/enabled": {
+      "output": false,
+      "reason": "segment skipping after playback starts"
+    },
+    "sponsorblock/sponsor": {
+      "output": false,
+      "reason": "segment skipping after playback starts"
+    },
+    "sponsorblock/selfpromo": {
+      "output": false,
+      "reason": "segment skipping after playback starts"
+    },
+    "sponsorblock/interaction": {
+      "output": false,
+      "reason": "segment skipping after playback starts"
+    },
+    "sponsorblock/intro": {
+      "output": false,
+      "reason": "segment skipping after playback starts"
+    },
+    "sponsorblock/outro": {
+      "output": false,
+      "reason": "segment skipping after playback starts"
+    },
+    "sponsorblock/preview": {
+      "output": false,
+      "reason": "segment skipping after playback starts"
+    },
+    "sponsorblock/music_offtopic": {
+      "output": false,
+      "reason": "segment skipping after playback starts"
+    },
+    "sponsorblock/filler": {
+      "output": false,
+      "reason": "segment skipping after playback starts"
+    },
+    "sponsorblock/poi_highlight": {
+      "output": false,
+      "reason": "segment skipping after playback starts"
+    },
+    "integrations/ryd": {
+      "output": false,
+      "reason": "dislike counts, no resolve"
+    },
+    "downloads/folder": {
+      "output": false,
+      "reason": "downloads resolve on their own runner, never through the playback resolve cache (RES-02)"
+    },
+    "downloads/quality": {
+      "output": false,
+      "reason": "downloads resolve on their own runner, never through the playback resolve cache (RES-02)"
+    },
+    "downloads/unmeteredOnly": {
+      "output": false,
+      "reason": "download scheduling"
+    },
+    "diagnostics/timingLog": {
+      "output": false,
+      "reason": "logging only"
+    },
+    "playback/dubLanguage": {
+      "output": true,
+      "request_field": "dubLanguage"
+    },
+    "playback/stableVolume": {
+      "output": false,
+      "reason": "host-side audio choice from the same answer"
+    },
+    "playback/coverVideo": {
+      "output": false,
+      "reason": "cover rendering of the same frames"
+    },
+    "diagnostics/startLowRung": {
+      "output": false,
+      "reason": "start-up experiment: the first plan uses a lower rung of the same StreamSet, then one switch up; the resolve answer is the same"
+    },
+    "providers/poTokenHeapMb": {
+      "output": false,
+      "reason": "V8 heap ceiling of the PO-token helper; does not change which formats are returned"
+    }
+  }
+}

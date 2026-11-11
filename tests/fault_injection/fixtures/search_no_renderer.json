@@ -1,0 +1,14 @@
+{
+  "responseContext": {"note": "synthetic: a valid JSON answer whose result container (sectionListRenderer) is missing"},
+  "contents": {
+    "twoColumnSearchResultsRenderer": {
+      "primaryContents": {
+        "somethingNewRenderer": {
+          "contents": [
+            {"videoRenderer": {"videoId": "fiSearch003", "title": {"simpleText": "Outside the known container"}}}
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- synthetic fault-injection fixture: @CH@ and @T@ are replaced by the test -->
+<feed xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
+ <yt:channelId>@CH@</yt:channelId>
+ <title>Fault channel @T@</title>
+ <entry>
+  <yt:videoId>fi@T@rss00001</yt:videoId>
+  <yt:channelId>@CH@</yt:channelId>
+  <title>Feed row one</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=fi@T@rss00001"/>
+  <author><name>Fault channel @T@</name></author>
+  <published>2026-11-07T10:00:00+00:00</published>
+  <media:group><media:community><media:statistics views="10"/></media:community></media:group>
+ </entry>
+ <entry>
+  <yt:videoId>fi@T@rss00002</yt:videoId>
+  <yt:channelId>@CH@</yt:channelId>
+  <title>Feed row two</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=fi@T@rss00002"/>
+  <author><name>Fault channel @T@</name></author>
+  <published>2026-11-06T10:00:00+00:00</published>
+ </entry>
+ <entry>
+  <yt:videoId>fi@T@rss00003</yt:videoId>
+  <yt:channelId>@CH@</yt:channelId>
+  <title>Feed row three</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=fi@T@rss00003"/>
+  <author><name>Fault channel @T@</name></author>
+  <published>2026-11-05T10:00:00+00:00</published>
+ </entry>
+</feed>

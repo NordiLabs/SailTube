@@ -1,0 +1,65 @@
+# SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
+# synthetic baseline (speculative resolve off) for tests/perf_summary/run.sh
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: tap t=0 run=1 net=wifi
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: resolve-done t=50 run=1 path=fast
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: first-frame t=5000 run=1
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: tap t=25000 run=2 net=wifi
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: resolve-done t=25050 run=2 path=fast
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: first-frame t=25300 run=2
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: tap t=45300 run=3 net=wifi
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: resolve-done t=45350 run=3 path=fast
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: first-frame t=45700 run=3
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: tap t=65700 run=4 net=wifi
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: resolve-done t=65750 run=4 path=fast
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: first-frame t=66200 run=4
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: tap t=86200 run=5 net=wifi
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: resolve-done t=86250 run=5 path=fast
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: first-frame t=86800 run=5
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: tap t=106800 run=6 net=wifi
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: resolve-done t=106850 run=6 path=fast
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: first-frame t=107500 run=6
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: tap t=127500 run=7 net=wifi
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: resolve-done t=127550 run=7 path=fast
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: first-frame t=128300 run=7
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: tap t=148300 run=8 net=wifi
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: resolve-done t=148350 run=8 path=fast
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: first-frame t=149200 run=8
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: tap t=169200 run=9 net=wifi
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: resolve-done t=169250 run=9 path=fast
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: first-frame t=170200 run=9
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: tap t=190200 run=10 net=wifi
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: resolve-done t=190250 run=10 path=fast
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: first-frame t=191300 run=10
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: tap t=211300 run=11 net=wifi
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: resolve-done t=211350 run=11 path=fast
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: first-frame t=212500 run=11
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: tap t=232500 run=12 net=wifi
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: resolve-done t=232550 run=12 path=fast
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: first-frame t=233800 run=12
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: tap t=253800 run=13 net=wifi
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: resolve-done t=253850 run=13 path=fast
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: first-frame t=255200 run=13
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: tap t=275200 run=14 net=wifi
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: resolve-done t=275250 run=14 path=fast
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: first-frame t=276700 run=14
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: tap t=296700 run=15 net=wifi
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: resolve-done t=296750 run=15 path=fast
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: first-frame t=298300 run=15
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: tap t=318300 run=16 net=wifi
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: resolve-done t=318350 run=16 path=fast
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: first-frame t=320000 run=16
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: tap t=340000 run=17 net=wifi
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: resolve-done t=340050 run=17 path=fast
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: first-frame t=341800 run=17
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: tap t=361800 run=18 net=wifi
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: resolve-done t=361850 run=18 path=fast
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: first-frame t=363700 run=18
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: tap t=383700 run=19 net=wifi
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: resolve-done t=383750 run=19 path=fast
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: first-frame t=385700 run=19
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: tap t=405700 run=20 net=wifi
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: resolve-done t=405750 run=20 path=fast
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: first-frame t=407800 run=20
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: tap t=427800 run=21 net=wifi
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: resolve-done t=427850 run=21 path=fast
+Nov 08 21:00:00 poco harbour-sailtube[4242]: sailtube-timing: first-frame t=430000 run=21

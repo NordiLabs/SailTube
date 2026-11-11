@@ -1,0 +1,30 @@
+# NFR-TST-06 coverage ratchet: untested engine functions (tools/coverage_ratchet.py).
+# This list may only shrink: add a test and run `tools/coverage_ratchet.py update`.
+Core/Downloads/Domain/DownloadPolicy.h::isTransfer
+Core/Downloads/Domain/DownloadPolicy.h::isUnfinished
+Core/Downloads/Domain/DownloadPolicy.h::outputLayoutFor
+Core/Downloads/Domain/DownloadPolicy.h::rangeEnd
+Core/Downloads/Infrastructure/DownloadEngine.h::DownloadEngine::markFileMissing
+Core/Downloads/Infrastructure/DownloadEngine.h::DownloadEngine::trackPath
+Core/Downloads/Infrastructure/DownloadEngine.h::EngineOptions::assumedDecoders
+Core/Downloads/Infrastructure/DownloadLocation.h::DownloadLocation::ensureDefaultDirectory
+Core/Downloads/Infrastructure/DownloadManager.h::DownloadManager::defaultFolder
+Core/Downloads/Infrastructure/DownloadManager.h::DownloadManager::enqueueAllEntries
+Core/Downloads/Infrastructure/DownloadManager.h::DownloadManager::enqueueEntry
+Core/Downloads/Infrastructure/DownloadQueueStore.h::DownloadQueueStore::loadAll
+Core/Downloads/Infrastructure/DownloadQueueStore.h::DownloadQueueStore::nextSortKey
+Core/Downloads/Infrastructure/DownloadQueueStore.h::DownloadQueueStore::readExtras
+Core/Downloads/Infrastructure/DownloadQueueStore.h::DownloadQueueStore::updateProgress
+Core/Downloads/Infrastructure/DownloadQueueStore.h::DownloadQueueStore::writeExtras
+Core/Downloads/Infrastructure/YtDlpDownloadResolver.h::YtDlpDownloadResolver::fromDetails
+Core/Library/Infrastructure/ImportJob.h::ImportJob::summaryToVariant
+Core/Library/Infrastructure/LibraryStore.h::libraryNowMs
+Core/Library/Infrastructure/SailTubeBackup.h::sailTubeBackupJson
+Core/Library/Infrastructure/TakeoutImporter.h::importOpmlFile
+Core/Library/Infrastructure/ZipReader.h::importLocalPath
+Core/Media/Domain/MediaFormat.h::audioCodecName
+Core/Media/Domain/MediaFormat.h::videoCodecName
+Core/Platform/Infrastructure/GstCapabilityProbe.h::probeGstreamer
+Core/Platform/Infrastructure/GstCapabilityProbe.h::selectPlaybinImplementation
+Core/Resolver/Infrastructure/YtDlpJson.h::parseFormat
+Core/Resolver/Infrastructure/YtDlpJson.h::parseLiveStatus

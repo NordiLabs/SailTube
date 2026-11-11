@@ -1,0 +1,50 @@
+{
+ "about": "NFR-MNT-04 shrink-only waivers (tools/check_client_definitions.py). 'strays': a site outside its component's definitions file; 'unfixtured': a definitions value no fixture mentions. Each entry must still match, so an entry is deleted when its owner fixes it, and a new stray or unfixtured value is never added here: fix it instead. Entries owned by 'sailtune' are pinned code (Shared/SailTune/**) and leave only through a re-pin (NFR-MNT-01). Recorded 2026-11-08.",
+ "strays": [
+  {
+   "owner": "sailtune",
+   "component": "shared-playback",
+   "file": "Shared/SailTune/Core/SharedPlayback/Infrastructure/FastStreamResolver.cpp",
+   "kind": "endpoint",
+   "value": "youtubei/v1/visitor_id"
+  },
+  {
+   "owner": "sailtune",
+   "component": "shared-playback",
+   "file": "Shared/SailTune/Core/SharedPlayback/Infrastructure/FastStreamResolver.cpp",
+   "kind": "query-param",
+   "value": "prettyPrint=false",
+   "sites": 2
+  },
+  {
+   "owner": "sailtune",
+   "component": "shared-playback",
+   "file": "Shared/SailTune/Core/SharedPlayback/Infrastructure/FastStreamResolver.cpp",
+   "kind": "visitor-key",
+   "value": "visitorData"
+  },
+  {
+   "owner": "sailtune",
+   "component": "shared-playback",
+   "file": "Shared/SailTune/Core/SharedPlayback/Infrastructure/FastStreamResolver.cpp",
+   "kind": "endpoint",
+   "value": "youtubei/v1/player"
+  }
+ ],
+ "unfixtured": [
+  {
+   "owner": "sailtune",
+   "component": "shared-playback",
+   "file": "Shared/SailTune/Core/SharedPlayback/Domain/InnerTubeClient.h",
+   "kind": "client-version",
+   "value": "2.20260101.01.00"
+  },
+  {
+   "owner": "account",
+   "component": "account",
+   "file": "Core/Account/Infrastructure/AccountService.cpp",
+   "kind": "client-version",
+   "value": "2.20241105.01.00"
+  }
+ ]
+}

@@ -1,0 +1,200 @@
+{
+  "note": "PLT-04 permission audit (NFR-TST-03 invariant 4). Every permission PLT-04 allows has an entry; declared:true entries must be in the desktop entry's [X-Sailjail] Permissions= and map to a feature flag and to code that uses the permission. A permission with no feature is not declared. Edit together with docs/PLATFORM_CHECKS.md and tests/privacy/network_allowlist.json (build_permissions). Checked by tools/platform_check.py permissions.",
+  "sailjail": {
+    "organization": "org.nordilabs.sailtube",
+    "application": "SailTube"
+  },
+  "desktop_files": {
+    "FULL": "harbour-sailtube.desktop",
+    "STORE": "harbour-sailtube.desktop"
+  },
+  "feature_flags": {
+    "core.network": {
+      "kind": "always",
+      "description": "Search, video details, stream resolution (yt-dlp child and the shared fast path), DASH manifests, thumbnails and downloads. Compiled into every variant."
+    },
+    "core.playback": {
+      "kind": "always",
+      "description": "Audio and video output through the app's own GStreamer player (FULL; the STORE build compiles it out until the reduced Qt Multimedia path exists, E9) and MPRIS controls through Amber.Mpris. Compiled into every variant."
+    },
+    "downloads.userFolders": {
+      "kind": "always",
+      "description": "DL-06: besides the private AppDataLocation/downloads default, the download-folder setting offers the user's Videos, Music and Downloads folders and mounted SD cards (/run/media/<user>/*), each write-probed when chosen. Compiled into every variant."
+    },
+    "library.fileImportExport": {
+      "kind": "always",
+      "description": "IMP-01/IMP-02: import from a file the user picks (Sailfish.Pickers FilePickerPage, or a typed ~/ path) and export a backup into a folder the user picks (FolderPickerPage). Compiled into every variant."
+    },
+    "downloads.mediaIndexing": {
+      "kind": "planned",
+      "description": "Downloads appear in the system galleries (tracker indexing). Not built."
+    },
+    "account.secretsVault": {
+      "kind": "planned",
+      "description": "ACC-10 Sailfish Secrets vault. Not built."
+    },
+    "account.webViewSignIn": {
+      "kind": "planned",
+      "description": "ACC-05 embedded WebView sign-in, only after experiment E1. Not built."
+    }
+  },
+  "location_permissions": {
+    "QStandardPaths::MoviesLocation": "Videos",
+    "QStandardPaths::MusicLocation": "Music",
+    "QStandardPaths::DownloadLocation": "Downloads",
+    "StandardPaths.videos": "Videos",
+    "StandardPaths.music": "Music",
+    "StandardPaths.download": "Downloads",
+    "/run/media": "RemovableMedia"
+  },
+  "permissions": {
+    "Internet": {
+      "declared": true,
+      "feature": "Network access for search, details, stream resolution, manifests, thumbnails and downloads",
+      "flags": [
+        "core.network"
+      ],
+      "variants": [
+        "STORE",
+        "FULL"
+      ],
+      "code": [
+        "Clients/Sailfish/Composition/main.cpp",
+        "Core/Media/Infrastructure/DashManifestPreparer.cpp",
+        "Core/Downloads/Infrastructure/DownloadEngine.cpp",
+        "Shared/SailTune/Core/SharedPlayback/Infrastructure/HttpsConnection.h"
+      ],
+      "uses": "QNetworkAccessManager|QNetworkRequest|QSslSocket|QTcpSocket",
+      "requirement": "PLT-04; NFR-SEC-01"
+    },
+    "Audio": {
+      "declared": true,
+      "feature": "Audio and video playback through the app's GStreamer player (pulsesink, the audio resource) and MPRIS media controls (Amber.Mpris)",
+      "flags": [
+        "core.playback"
+      ],
+      "variants": [
+        "STORE",
+        "FULL"
+      ],
+      "code": [
+        "Core/Player/Domain/PipelinePlan.cpp",
+        "Core/Player/Domain/AudioResourcePolicy.h",
+        "Core/Player/Infrastructure/AudioResourceGate.cpp",
+        "Clients/Sailfish/qml/components/MediaControls.qml"
+      ],
+      "uses": "pulsesink|media\\.role|AudioResourceQt|import Amber\\.Mpris",
+      "requirement": "PLT-04; PLT-10; PLT-12; PLY-23; MPR-01"
+    },
+    "Videos": {
+      "declared": false,
+      "feature": "DL-06 download target: the user's Videos folder",
+      "flags": [
+        "downloads.userFolders"
+      ],
+      "variants": [
+        "STORE",
+        "FULL"
+      ],
+      "code": [
+        "Core/Downloads/Infrastructure/DownloadLocation.cpp"
+      ],
+      "uses": "MoviesLocation",
+      "gap": "the DL-06 folder choice lists ~/Videos; under Sailjail without Videos the write probe refuses it (handled error, not a crash)",
+      "requirement": "PLT-04 (optional); DL-06"
+    },
+    "Music": {
+      "declared": false,
+      "feature": "DL-06 download target: the user's Music folder (audio-only downloads)",
+      "flags": [
+        "downloads.userFolders"
+      ],
+      "variants": [
+        "STORE",
+        "FULL"
+      ],
+      "code": [
+        "Core/Downloads/Infrastructure/DownloadLocation.cpp"
+      ],
+      "uses": "MusicLocation",
+      "gap": "the DL-06 folder choice lists ~/Music; under Sailjail without Music the write probe refuses it",
+      "requirement": "PLT-04 (optional); DL-06"
+    },
+    "Downloads": {
+      "declared": false,
+      "feature": "DL-06 download target ~/Downloads, and importing from / exporting to files the user picks (IMP-01, IMP-02)",
+      "flags": [
+        "downloads.userFolders",
+        "library.fileImportExport"
+      ],
+      "variants": [
+        "STORE",
+        "FULL"
+      ],
+      "code": [
+        "Core/Downloads/Infrastructure/DownloadLocation.cpp",
+        "Clients/Sailfish/qml/pages/ImportExportPage.qml",
+        "Core/Library/Infrastructure/ZipReader.cpp"
+      ],
+      "uses": "DownloadLocation|FilePickerPage|FolderPickerPage|homePath",
+      "gap": "under Sailjail without Downloads the DL-06 ~/Downloads choice is refused and the import/export pickers cannot reach ~/Downloads (Takeout and NewPipe archives usually sit there); not in the PLT-03 'lost' list",
+      "requirement": "PLT-04 (optional); DL-06; IMP-01"
+    },
+    "RemovableMedia": {
+      "declared": false,
+      "feature": "DL-06 download target on a mounted SD card (/run/media/<user>/*)",
+      "flags": [
+        "downloads.userFolders"
+      ],
+      "variants": [
+        "STORE",
+        "FULL"
+      ],
+      "code": [
+        "Core/Downloads/Infrastructure/DownloadLocation.cpp"
+      ],
+      "uses": "/run/media/",
+      "gap": "the DL-06 folder choice lists SD cards; under Sailjail without RemovableMedia /run/media is not visible, so no card is offered",
+      "requirement": "PLT-04 (optional); DL-06"
+    },
+    "MediaIndexing": {
+      "declared": false,
+      "feature": "Downloads appear in the system galleries",
+      "flags": [
+        "downloads.mediaIndexing"
+      ],
+      "variants": [
+        "STORE",
+        "FULL"
+      ],
+      "code": [],
+      "requirement": "PLT-04 (optional)"
+    },
+    "Secrets": {
+      "declared": false,
+      "feature": "Secrets vault for account data (ACC-10)",
+      "flags": [
+        "account.secretsVault"
+      ],
+      "variants": [
+        "STORE",
+        "FULL"
+      ],
+      "code": [],
+      "requirement": "PLT-04 (optional); ACC-10"
+    },
+    "WebView": {
+      "declared": false,
+      "feature": "Embedded WebView sign-in (ACC-05), only after E1 passes",
+      "flags": [
+        "account.webViewSignIn"
+      ],
+      "variants": [
+        "STORE",
+        "FULL"
+      ],
+      "code": [],
+      "requirement": "PLT-04 (optional); ACC-05; E1"
+    }
+  }
+}

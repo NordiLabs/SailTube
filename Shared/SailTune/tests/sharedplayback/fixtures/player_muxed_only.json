@@ -1,0 +1,120 @@
+{
+  "playabilityStatus": {
+    "status": "OK"
+  },
+  "playerConfig": {
+    "audioConfig": {
+      "enablePerFormatLoudness": true,
+      "loudnessTargetLkfs": -14,
+      "perceptualLoudnessDb": -10.55,
+      "trackAbsoluteLoudnessLkfs": -10.55
+    }
+  },
+  "responseContext": {
+    "visitorData": "SYNTHETICVISITORDATA"
+  },
+  "streamingData": {
+    "adaptiveFormats": [
+      {
+        "approxDurationMs": "211000",
+        "averageBitrate": 64128,
+        "bitrate": 64628,
+        "contentLength": "1680328",
+        "fps": 25,
+        "height": 1080,
+        "itag": 137,
+        "mimeType": "video/mp4; codecs=\"avc1.640020\"",
+        "quality": "hd1080",
+        "url": "https://rr1---sn-test.googlevideo.com/videoplayback?expire=4102444800&ei=SYNTHETIC&ip=0.0.0.0&id=o-SYNTHETIC&itag=137&source=youtube&sig=SYNTHETIC",
+        "width": 1080
+      },
+      {
+        "approxDurationMs": "211000",
+        "averageBitrate": 172016,
+        "bitrate": 172516,
+        "contentLength": "4485416",
+        "fps": 25,
+        "height": 1080,
+        "itag": 248,
+        "mimeType": "video/webm; codecs=\"vp9\"",
+        "quality": "hd1080",
+        "url": "https://rr1---sn-test.googlevideo.com/videoplayback?expire=4102444800&ei=SYNTHETIC&ip=0.0.0.0&id=o-SYNTHETIC&itag=248&source=youtube&sig=SYNTHETIC",
+        "width": 1080
+      },
+      {
+        "approxDurationMs": "211000",
+        "averageBitrate": 153926,
+        "bitrate": 154426,
+        "contentLength": "4015076",
+        "fps": 25,
+        "height": 1080,
+        "itag": 399,
+        "mimeType": "video/mp4; codecs=\"av01.0.08M.08\"",
+        "quality": "hd1080",
+        "url": "https://rr1---sn-test.googlevideo.com/videoplayback?expire=4102444800&ei=SYNTHETIC&ip=0.0.0.0&id=o-SYNTHETIC&itag=399&source=youtube&sig=SYNTHETIC",
+        "width": 1080
+      },
+      {
+        "approxDurationMs": "211000",
+        "averageBitrate": 39500,
+        "bitrate": 40000,
+        "contentLength": "1040000",
+        "fps": 25,
+        "height": 720,
+        "itag": 136,
+        "mimeType": "video/mp4; codecs=\"avc1.4d401f\"",
+        "quality": "hd720",
+        "url": "https://rr1---sn-test.googlevideo.com/videoplayback?expire=4102444800&ei=SYNTHETIC&ip=0.0.0.0&id=o-SYNTHETIC&itag=136&source=youtube&sig=SYNTHETIC",
+        "width": 720
+      },
+      {
+        "approxDurationMs": "211000",
+        "averageBitrate": 89500,
+        "bitrate": 90000,
+        "contentLength": "2340000",
+        "fps": 25,
+        "height": 720,
+        "itag": 247,
+        "mimeType": "video/webm; codecs=\"vp9\"",
+        "quality": "hd720",
+        "url": "https://rr1---sn-test.googlevideo.com/videoplayback?expire=4102444800&ei=SYNTHETIC&ip=0.0.0.0&id=o-SYNTHETIC&itag=247&source=youtube&sig=SYNTHETIC",
+        "width": 720
+      }
+    ],
+    "expiresInSeconds": "21540",
+    "hlsManifestUrl": "https://manifest.googlevideo.com/api/manifest/hls_variant/synthetic/file/index.m3u8",
+    "formats": [
+      {
+        "itag": 18,
+        "mimeType": "video/mp4; codecs=\"avc1.42001E, mp4a.40.2\"",
+        "bitrate": 500000,
+        "width": 640,
+        "height": 360,
+        "contentLength": "3500000",
+        "audioQuality": "AUDIO_QUALITY_LOW",
+        "audioChannels": 2,
+        "url": "https://rr1---sn-test.googlevideo.com/videoplayback?expire=4102444800&ei=SYNTHETIC&ip=0.0.0.0&id=o-SYNTHETIC&itag=18&source=youtube&sig=SYNTHETIC"
+      }
+    ]
+  },
+  "videoDetails": {
+    "author": "Synthetic Artist - Topic",
+    "lengthSeconds": "211",
+    "thumbnail": {
+      "thumbnails": [
+        {
+          "height": 90,
+          "url": "https://i.ytimg.com/vi/AAAAAAAAAAA/default.jpg",
+          "width": 120
+        },
+        {
+          "height": 360,
+          "url": "https://i.ytimg.com/vi/AAAAAAAAAAA/hqdefault.jpg",
+          "width": 480
+        }
+      ]
+    },
+    "title": "Synthetic Song",
+    "videoId": "AAAAAAAAAAA"
+  }
+}

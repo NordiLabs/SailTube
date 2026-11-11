@@ -1,0 +1,12 @@
+{
+  "responseContext": {"note": "synthetic: a related continuation page with one healthy and one bad row"},
+  "onResponseReceivedEndpoints": [
+    {"appendContinuationItemsAction": {
+      "targetId": "watch-next-feed",
+      "continuationItems": [
+        {"compactVideoRenderer": {"videoId": "fiRelated03", "title": {"simpleText": "Related page two"}, "lengthText": {"simpleText": "5:00"}}},
+        {"compactVideoRenderer": {"title": {"simpleText": "Bad row on page two"}}}
+      ]
+    }}
+  ]
+}

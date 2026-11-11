@@ -1,0 +1,54 @@
+{
+ "playabilityStatus": {
+  "status": "OK"
+ },
+ "playerConfig": {
+  "audioConfig": {
+   "enablePerFormatLoudness": true,
+   "loudnessTargetLkfs": -14,
+   "perceptualLoudnessDb": -10.55,
+   "trackAbsoluteLoudnessLkfs": -10.55
+  }
+ },
+ "responseContext": {
+  "visitorData": "SYNTHETICVISITORDATA"
+ },
+ "streamingData": {
+  "adaptiveFormats": [
+   {
+    "approxDurationMs": "211000",
+    "audioChannels": 2,
+    "audioQuality": "AUDIO_QUALITY_MEDIUM",
+    "audioSampleRate": "44100",
+    "averageBitrate": 151672,
+    "bitrate": 152672,
+    "contentLength": "8296263",
+    "itag": 251,
+    "mimeType": "audio/webm; codecs=\"opus\"",
+    "url": "https://rr1---sn-test.googlevideo.com/videoplayback?expire=4102444800&ei=SYNTHETIC&ip=0.0.0.0&id=o-SYNTHETIC&itag=251&source=youtube&sig=SYNTHETIC"
+   }
+  ],
+  "expiresInSeconds": "21540",
+  "hlsManifestUrl": "https://manifest.googlevideo.com/api/manifest/hls_variant/synthetic/file/index.m3u8"
+ },
+ "videoDetails": {
+  "author": "Synthetic Artist - Topic",
+  "lengthSeconds": "211",
+  "thumbnail": {
+   "thumbnails": [
+    {
+     "height": 90,
+     "url": "https://i.ytimg.com/vi/AAAAAAAAAAA/default.jpg",
+     "width": 120
+    },
+    {
+     "height": 360,
+     "url": "https://i.ytimg.com/vi/AAAAAAAAAAA/hqdefault.jpg",
+     "width": 480
+    }
+   ]
+  },
+  "title": "Synthetic Song",
+  "videoId": "AAAAAAAAAAA"
+ }
+}

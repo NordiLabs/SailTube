@@ -1,0 +1,13 @@
+{
+ "about": "NFR-MNT-04: one definitions file per component (tools/check_client_definitions.py, docs/CLIENT_DEFINITIONS.md). A component is the directory 'root'; only 'definitions' may hold client names, client versions and endpoint parameter strings. 'pinned' components are SailTune code under Shared/: they change by re-pin only (NFR-MNT-01).",
+ "scan": {"roots": ["Core", "Clients", "Shared"], "exclude": ["Shared/SailTune/tests"]},
+ "fixtures": {"roots": ["tests", "Shared/SailTune/tests"], "exclude": ["tests/client_definitions"]},
+ "components": [
+  {"name": "shared-playback", "root": "Shared/SailTune/Core/SharedPlayback", "definitions": "Shared/SailTune/Core/SharedPlayback/Domain/InnerTubeClient.h", "owner": "sailtune", "pinned": true},
+  {"name": "catalog", "root": "Core/Catalog", "definitions": "Core/Catalog/Infrastructure/InnerTubeClient.cpp", "owner": "catalog"},
+  {"name": "account", "root": "Core/Account", "definitions": "Core/Account/Infrastructure/AccountService.cpp", "owner": "account"},
+  {"name": "library", "root": "Core/Library", "definitions": "Core/Library/Infrastructure/AccountImport.cpp", "owner": "library"},
+  {"name": "resolver", "root": "Core/Resolver", "definitions": "Core/Resolver/Infrastructure/YtDlpVideoService.cpp", "owner": "core"},
+  {"name": "sailfish-client", "root": "Clients/Sailfish", "definitions": "Clients/Sailfish/Composition/LibraryCatalogGlue.cpp", "owner": "library"}
+ ]
+}

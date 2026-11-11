@@ -1,0 +1,30 @@
+# SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
+# Playability matrix list (docs/PLAYABILITY.md). Tab-separated:
+# category	id	expect (plays | fails)	player_client tries if it fails (<= 3)	why it is in the category
+ordinary	R6MlUcmOul8	plays	tv,web_embedded,android_vr	Tears of Steel (Blender, 2012): long-lived official upload, VP9 + H.264 ladder
+ordinary	iqKdEhx-dD4	plays	tv,web_embedded,android_vr	Vsauce "Mind Field" Ep 1 (2017): big creator channel; yt-dlp's own test video
+music-label	kJQP7kiw5Fk	plays	tv,web_embedded,android_vr	Luis Fonsi "Despacito" on LuisFonsiVEVO: label-managed VEVO upload
+music-label	dQw4w9WgXcQ	plays	tv,web_embedded,android_vr	Rick Astley "Never Gonna Give You Up": official label video (Sony/RCA, ex-VEVO)
+music-label	IB3lcPjvWLA	plays	tv,web_embedded,android_vr	Afrojack "The Spark" official video (Spinnin'/label upload; yt-dlp test)
+shorts	18NGQq7p3LY	plays	tv,web_embedded,android_vr	A /shorts/ upload from yt-dlp's test list (vertical, < 60 s)
+live-now	rFZHOHl-L8A	plays	android_vr,web_safari,tv	Lofi Girl "lofi hip hop radio": the current 24/7 stream (is_live, 2026-11-10; the channel restarts it now and then, so check with the /streams tab)
+live-dvr	lqQg6PlCWgI	plays	tv,web_embedded,android_vr	London 2012 hockey broadcast: finished live (was_live), full recording
+live-dvr	qVv6vCqciTM	plays	tv,web_embedded,android_vr	VTuber Christmas stream 2022 via /live/: post-live recording (yt-dlp test)
+upcoming	O9V_EFbgpKQ	fails	-	Hoshimachi Suisei "free chat room": scheduled, never-starting placeholder (is_upcoming)
+age-restricted	HtVdAasjOgU	fails	web_embedded,tv,tv_simply	The Witcher 3 trailer: age-gated, embedding allowed (yt-dlp: "works with web_embedded")
+age-restricted	Tq92D6wQ1mg	fails	web_embedded,tv,tv_simply	MMD "Adios": age-gated, embeddable only with clientScreen=EMBED (yt-dlp test)
+age-restricted	SZJvDhaSDnc	fails	web_embedded,tv,tv_simply	News report (2014): age-gated, needs authentication (yt-dlp test)
+4k-hdr	aqz-KE-bpKQ	plays	tv,web_embedded,android_vr	Big Buck Bunny 4K 60 fps (Blender): 2160p60 rungs above the 720p ceiling
+4k-hdr	LXb3EKWsInQ	plays	tv,web_embedded,android_vr	"Costa Rica in 4K 60fps HDR" (Jacob + Katie Schwarz): HDR (VP9.2) rungs
+old-h264	dMH0bHeiRNg	plays	tv,web_embedded,android_vr	"Evolution of Dance" (2006): early upload, H.264-era encodes
+old-h264	_OBlgSz8sSM	plays	tv,web_embedded,android_vr	"Charlie bit my finger" (2007): early upload, low resolution
+old-h264	YE7VzlLtp-4	plays	tv,web_embedded,android_vr	Big Buck Bunny (Blender upload 2008): yt-dlp's first test video
+long	r4wLXNydzeY	plays	tv,web_embedded,android_vr	Lex Fridman Podcast (John Mearsheimer): 3 h 27 min
+multi-audio	kX3nB4PpJko	plays	tv,web_embedded,android_vr	MrBeast "Last To Take Hand Off Jet": dubbed audio tracks in many languages
+kids	XqZsoesa55w	plays	web_embedded,tv,android_vr	Pinkfong "Baby Shark Dance": made for kids (yt-dlp adds web_embedded for these)
+embed-disabled	MeJVWBSsPAY	plays	tv,web_embedded,android_vr	OOMPH! "Such Mich Find Mich" lyrics: not embeddable, not age-gated (yt-dlp test)
+region-limited	sJL6WA-aGkQ	fails	-	Geo-restricted to Japan (yt-dlp test); the host is outside Japan
+members-only	CNbsMah32Ss	fails	-	Linus Tech Tips members-only video (from the channel's UUMO playlist, subscriber_only)
+private	yZIXLfi8CZQ	fails	-	Formerly embed-only video, now "Private video" (yt-dlp test)
+removed	6SJNVb0GnPI	fails	-	Removed for violating YouTube's policy (yt-dlp test)
+removed	Q39EVAstoRM	fails	-	"This video does not exist" (yt-dlp test)

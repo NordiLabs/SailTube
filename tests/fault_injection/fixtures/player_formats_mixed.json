@@ -1,0 +1,21 @@
+{
+  "responseContext": {"note": "synthetic fault-injection fixture: a fast-path player answer with healthy and bad formats"},
+  "playabilityStatus": {"status": "OK"},
+  "videoDetails": {"videoId": "fiResolve01", "title": "Synthetic", "author": "Fault Channel", "lengthSeconds": "60", "isLive": false},
+  "streamingData": {
+    "expiresInSeconds": "21540",
+    "adaptiveFormats": [
+      {"itag": 251, "url": "https://rr1---sn-fault.googlevideo.com/videoplayback?expire=4102444800&itag=251", "mimeType": "audio/webm; codecs=\"opus\"", "bitrate": 130000, "contentLength": "90000", "audioQuality": "AUDIO_QUALITY_MEDIUM"},
+      {"itag": 140, "signatureCipher": "s=SYNTHETIC&sp=sig&url=https%3A%2F%2Frr1---sn-fault.googlevideo.com%2Fvideoplayback", "mimeType": "audio/mp4; codecs=\"mp4a.40.2\""},
+      {"itag": 141, "url": "https://rr1---sn-fault.googlevideo.com/videoplayback?itag=141", "mimeType": "audio/mp4; codecs=\"mp4a.40.2\"", "drmFamilies": ["WIDEVINE"]},
+      {"itag": 142, "url": "http://rr1---sn-fault.googlevideo.com/videoplayback?itag=142", "mimeType": "audio/mp4; codecs=\"mp4a.40.2\""},
+      {"itag": 143, "url": "https://media.fault.invalid/videoplayback?itag=143", "mimeType": "audio/mp4; codecs=\"mp4a.40.2\""},
+      {"itag": 144, "url": "https://rr1---sn-fault.googlevideo.com:8443/videoplayback?itag=144", "mimeType": "audio/mp4; codecs=\"mp4a.40.2\""},
+      {"itag": 145, "url": "https://rr1---sn-fault.googlevideo.com/videoplayback?itag=145", "mimeType": "text/plain"},
+      {"itag": 146, "url": "https://rr1---sn-fault.googlevideo.com/videoplayback?itag=146", "mimeType": "video/mp4; codecs=\"avc1.640028\"", "type": "FORMAT_STREAM_TYPE_OTF"},
+      {"itag": 147},
+      "not an object",
+      {"itag": 137, "url": "https://rr1---sn-fault.googlevideo.com/videoplayback?expire=4102444800&itag=137", "mimeType": "video/mp4; codecs=\"avc1.640028\"", "bitrate": 4000000, "width": 1920, "height": 1080, "fps": 30, "contentLength": "900000"}
+    ]
+  }
+}

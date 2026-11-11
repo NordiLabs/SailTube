@@ -1,0 +1,4 @@
+{
+  "responseContext": {"note": "synthetic: a terminated channel, an ERROR alert and no tab list"},
+  "alerts": [{"alertRenderer": {"type": "ERROR", "text": {"simpleText": "This account has been terminated."}}}]
+}
